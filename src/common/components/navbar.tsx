@@ -22,7 +22,8 @@ export function Navbar() {
     <div className="navbar-shell w-full py-2 ">
       <GeneralWrapper>
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex  flex-col relative">
+            <p className="text-[#94A3B8] whitespace-nowrap text-xs left-2 absolute top-0 w-full font-manrope font-bold">A Resonance Business Group Company</p>
             <Link href="/" className="shrink-0">
               <Image
                 src={cleaningServicesLogo}
