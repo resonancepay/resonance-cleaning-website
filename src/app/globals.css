@@ -23,11 +23,36 @@
   --brand-muted: #64748b;
   --nav-active: #0f172a;
   --ambient-shadow: 0 16px 32px rgba(8, 10, 88, 0.06);
+  --grey-1: #E2E8F0
 }
 
 @theme inline {
   --color-background: var(--surface);
   --color-foreground: var(--on-surface);
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark-green: var(--secondary-dark-green);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-accent-lime: var(--accent-lime);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-surface: var(--surface);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-variant: var(--surface-variant);
+  --color-outline-variant: var(--outline-variant);
+  --color-on-primary: var(--on-primary);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-brand-muted: var(--brand-muted);
+  --color-grey: var(--grey-1);
+  --color-nav-active: var(--nav-active);
+  --font-inter: var(--font-inter-semibold);
+  --font-manrope: var(--font-manrope);
   --font-sans: var(--font-manrope);
 }
 
@@ -175,7 +200,8 @@ textarea {
 
 .btn-primary,
 .btn-secondary,
-.btn-tertiary {
+.btn-tertiary,
+.btn-lime {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -193,6 +219,16 @@ textarea {
 
 .btn-tertiary {
   min-width: 10.5rem;
+}
+
+.btn-lime {
+  min-height: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: var(--accent-lime);
+  color: var(--primary);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .brand-muted {
@@ -270,6 +306,11 @@ textarea {
   transform: translateY(-1px);
 }
 
+.btn-lime:hover {
+  filter: saturate(1.08);
+  transform: translateY(-1px);
+}
+
 .field-input {
   width: 100%;
   border: none;
@@ -338,7 +379,11 @@ textarea {
 
 .home-banner-gradient {
   background-image:
-    linear-gradient(180deg, rgba(0, 10, 30, 0.82) 0%, rgba(0, 33, 71, 0.9) 100%),
+    linear-gradient(
+      180deg,
+      rgba(0, 10, 30, 0.82) 0%,
+      rgba(0, 33, 71, 0.9) 100%
+    ),
     url("../assets/images/Overlay+Shadow.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -348,4 +393,25 @@ textarea {
 
 .page-transition-region {
   will-change: opacity, transform, filter;
+}
+
+.domestic-cleaning-bg {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(8, 10, 88, 0.82) 0%,
+      rgba(8, 10, 88, 0.42) 32%,
+      rgba(8, 10, 88, 0.08) 58%,
+      rgba(8, 10, 88, 0) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(8, 10, 88, 0) 0%,
+      rgba(8, 10, 88, 0.2) 50%,
+      rgba(8, 10, 88, 0.9) 100%
+    ),
+    url("../assets/images/domestic-cleaningpng.png");
+  background-position: center, center, right center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
