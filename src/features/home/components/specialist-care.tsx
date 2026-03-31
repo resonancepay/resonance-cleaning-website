@@ -36,7 +36,7 @@ export const SpecialistCare = () => {
 
       gsap.from("[data-specialist-card]", {
         autoAlpha: 0,
-        x: 42,
+        y: 42,
         scale: 0.97,
         duration: 1,
         ease: "power3.out",
@@ -64,7 +64,7 @@ export const SpecialistCare = () => {
   return (
     <div ref={sectionRef} className="mt-20 mb-28">
       <GeneralWrapper>
-        <Row gutter={32}>
+        <Row gutter={{ lg: 32 }}>
           <Col xs={24} lg={8} className="mb-10 lg:mb-0">
             <div>
               <div data-specialist-copy>
@@ -100,7 +100,10 @@ export const SpecialistCare = () => {
               className="bg-surface-container-lowest h-full rounded-xl flex items-center shadow-[0_20px_50px_rgba(8,10,88,0.12)]"
             >
               <div className="lg:p-10 p-5 relative">
-                <span className="absolute lg:top-0 top-5 left-10" data-quote-mark>
+                <span
+                  className="absolute lg:top-0 top-5 left-10"
+                  data-quote-mark
+                >
                   <Image src={quoteIcon} alt="" />
                 </span>
                 <p className="font-manrope font-bold text-base lg:text-xl">

@@ -95,7 +95,7 @@ export const FiveStarStandard = () => {
   return (
     <div ref={sectionRef} className="bg-on-surface py-16 lg:py-32">
       <GeneralWrapper>
-        <Row gutter={80}>
+        <Row gutter={{ lg: 80 }}>
           <Col lg={12} xs={24} className="mb-10 lg:mb-0">
             <div>
               <h1

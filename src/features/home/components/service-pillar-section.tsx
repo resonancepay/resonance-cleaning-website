@@ -108,7 +108,7 @@ export const ServicePillarSection = () => {
             </p>
           </div>
         </div>
-        <Row gutter={32} className="mt-20" data-pillar-cards>
+        <Row gutter={{ lg: 32 }} className="mt-20" data-pillar-cards>
           <Col lg={16} xs={24}>
             <div
               data-pillar-card
@@ -173,7 +173,6 @@ export const ServicePillarSection = () => {
                       After-hours Discretion
                     </p>
                   </div>
-                  
                 </div>
               </div>
             </div>
