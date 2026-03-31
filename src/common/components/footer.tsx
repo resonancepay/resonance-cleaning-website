@@ -29,7 +29,7 @@ export function Footer() {
               and hospitality-driven care.
             </p>
           </Col>
-          <Col xs={18}>
+          <Col lg={18} xs={24}>
             <div className="w-full flex items-center justify-between mt-8 lg:mt-0 lg:justify-around">
               <div>
                 <p className="font-manrope text-accent-lime text-xs font-extrabold">
