@@ -6,10 +6,10 @@ import cleaningServicesLogo from "@/assets/images/Cleaning Services-1.png";
 
 export function Footer() {
   return (
-    <footer className="pt-20 bg-surface-container-low">
+    <footer className="lg:pt-20 bg-surface-container-low">
       <GeneralWrapper>
         <Row>
-          <Col xs={6}>
+          <Col lg={6} xs={24}>
             <div className="flex items-center gap-4">
               <Link href="/" className="shrink-0">
                 <Image
@@ -23,13 +23,13 @@ export function Footer() {
                 RESONANCE CLEANING
               </h1>
             </div>
-            <p className="font-manrope text-xs w-4/5">
+            <p className="font-manrope text-xs w-full lg:w-4/5">
               Setting the global benchmark for elite environmental maintenance
               and hospitality-driven care.
             </p>
           </Col>
           <Col xs={18}>
-            <div className="w-full flex items-center justify-around">
+            <div className="w-full flex items-center justify-between mt-8 lg:mt-0 lg:justify-around">
               <div>
                 <p className="font-manrope text-accent-lime text-xs font-extrabold">
                   COMPANY

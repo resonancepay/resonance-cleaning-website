@@ -6,9 +6,7 @@ import { PageTransition } from "@/common/components/page-transition";
 export default function PublicLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col ">
-      <header className="fixed w-full top-0 z-20  ">
-        <Navbar />
-      </header>
+      <Navbar />
       <PageTransition>{children}</PageTransition>
       <Footer />
     </div>

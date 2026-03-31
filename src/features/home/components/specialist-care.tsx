@@ -65,17 +65,23 @@ export const SpecialistCare = () => {
     <div ref={sectionRef} className="mt-20 mb-28">
       <GeneralWrapper>
         <Row gutter={32}>
-          <Col xs={8}>
+          <Col xs={24} lg={8} className="mb-10 lg:mb-0">
             <div>
               <div data-specialist-copy>
                 <Image src={specialistIcon} alt="" />
               </div>
             </div>
             <div className="mt-8">
-              <p data-specialist-copy className="font-manrope text-2xl font-bold">
+              <p
+                data-specialist-copy
+                className="font-manrope text-xl lg:text-2xl font-bold"
+              >
                 Specialist Care
               </p>
-              <p data-specialist-copy className="text-black text-base mt-4 mb-8">
+              <p
+                data-specialist-copy
+                className="text-black text-sm lg:text-base mt-4 mb-8"
+              >
                 Deep restoration services for marble, antique woods, and
                 high-performance glass facades using surgical precision.
               </p>
@@ -88,16 +94,16 @@ export const SpecialistCare = () => {
               </div>
             </div>
           </Col>
-          <Col xs={16}>
+          <Col xs={24} lg={16}>
             <div
               data-specialist-card
               className="bg-surface-container-lowest h-full rounded-xl flex items-center shadow-[0_20px_50px_rgba(8,10,88,0.12)]"
             >
-              <div className="p-10 relative">
-                <span className="absolute top-0 left-10" data-quote-mark>
+              <div className="lg:p-10 p-5 relative">
+                <span className="absolute lg:top-0 top-5 left-10" data-quote-mark>
                   <Image src={quoteIcon} alt="" />
                 </span>
-                <p className="font-manrope font-bold text-xl">
+                <p className="font-manrope font-bold text-base lg:text-xl">
                   &apos;&apos;The Polished Estate has completely transformed our
                   London townhouse management. Their team operates like a
                   high-end concierge service—invisible yet

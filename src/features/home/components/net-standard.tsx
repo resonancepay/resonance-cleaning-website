@@ -67,7 +67,7 @@ export const NetStandard = () => {
     >
       <GeneralWrapper>
         <Row justify={"center"}>
-          <Col xs={12}>
+          <Col lg={12} xs={24}>
             <p
               data-net-copy
               className="font-manrope font-extrabold text-5xl text-surface-container-lowest text-center"
@@ -80,15 +80,15 @@ export const NetStandard = () => {
             </p>
             <div
               data-net-actions
-              className="mt-8 flex items-center justify-center gap-4"
+              className="mt-8 flex lg:flex-row flex-col items-center justify-center gap-4"
             >
-              <div data-net-cta data-net-lime>
-                <Button className="py-4" variant="lime">
+              <div data-net-cta data-net-lime className="w-full lg:w-auto">
+                <Button className="py-4 w-full lg:w-auto " variant="lime">
                   Start Your Inquiry
                 </Button>
               </div>
-              <div data-net-cta>
-                <Button variant="glass">Download Brochure</Button>
+              <div data-net-cta className="w-full lg:w-auto">
+                <Button className="w-full lg:w-auto" variant="glass">Download Brochure</Button>
               </div>
             </div>
           </Col>

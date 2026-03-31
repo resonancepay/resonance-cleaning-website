@@ -37,7 +37,7 @@ export const HomeBanner = () => {
             duration: 0.9,
             stagger: 0.12,
           },
-          "-=1.2"
+          "-=1.2",
         )
         .to(
           "[data-hero-trust]",
@@ -47,7 +47,7 @@ export const HomeBanner = () => {
             scale: 1,
             duration: 0.8,
           },
-          "-=0.35"
+          "-=0.35",
         );
 
       gsap.to("[data-hero-trust]", {
@@ -74,48 +74,58 @@ export const HomeBanner = () => {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(163,223,66,0.14),transparent_26%)]"
       />
       <GeneralWrapper>
-        <div className="flex w-1/2 flex-col items-start">
+        <div className="flex lg:w-1/2 sm:w-4/5 w-full flex-col items-start">
           <div data-hero-copy>
             <BannerBadge />
           </div>
           <p
             data-hero-copy
-            className="mt-6 mb-8 text-7xl font-manrope font-extrabold leading-20 text-surface-container-lowest"
+            className="mt-6 mb-8 lg:text-7xl text-5xl font-manrope font-extrabold leading-14 lg:leading-20 text-surface-container-lowest"
           >
             Bespoke <span className="text-accent-lime">Excellence</span> for the
             Modern Estate.
           </p>
           <p
             data-hero-copy
-            className="mb-8 w-4/5 text-lg font-inter font-semibold text-surface-container-lowest"
+            className="mb-8 lg:w-1/2 sm:w-4/5 w-full text-lg font-inter font-semibold text-surface-container-lowest/80"
           >
             Redefining the standards of luxury maintenance across the United
             Kingdom. Impeccable, quiet, and authoritative service tailored to
             your lifestyle.
           </p>
-          <div data-hero-copy className="flex items-center gap-4">
-            <Button rightIcon={arrowRight} variant="lime" className="py-4">
+          <div
+            data-hero-copy
+            className="flex lg:flex-row flex-col items-start lg:items-center gap-4 w-full "
+          >
+            <Button
+              rightIcon={arrowRight}
+              variant="lime"
+              className="py-4 lg:w-auto w-full"
+            >
               Discover our services
             </Button>
-            <Button variant="glass" className="py-4">
+            <Button variant="glass" className="py-4 lg:w-auto w-full">
               Request a Private Viewing
             </Button>
           </div>
         </div>
       </GeneralWrapper>
 
-      <div className="absolute bottom-5 flex w-full items-center rounded-lg" data-hero-trust>
+      <div
+        className="absolute bottom-5 flex w-full items-center rounded-lg"
+        data-hero-trust
+      >
         <GeneralWrapper>
-          <div className="flex justify-end">
-            <div className="flex items-center gap-3 rounded-xl bg-surface-container-lowest p-6 shadow-[0_20px_50px_rgba(8,10,88,0.14)]">
+          <div className="flex justify-end w-full lg:w-auto ">
+            <div className="flex items-center gap-3 w-full lg:w-auto rounded-xl border border-white/20 bg-white/10 p-4 lg:p-6 backdrop-blur-xl sm:border-transparent sm:bg-surface-container-lowest sm:backdrop-blur-0 sm:shadow-[0_20px_50px_rgba(8,10,88,0.14)]">
               <div>
                 <Image src={trustIcon} alt="" />
               </div>
               <div>
-                <p className="text-[#080A58] opacity-60 text-xs font-manrope font-bold">
+                <p className="text-[10px] lg:text-xs font-manrope font-bold text-white/60 sm:text-[#080A58] sm:opacity-60">
                   TRUST SCORE
                 </p>
-                <p className="mt-1 text-xl font-manrope font-bold text-on-surface">
+                <p className="mt-1 lg:text-xl text-sm font-manrope font-bold text-white sm:text-on-surface">
                   5-Star UK Standard
                 </p>
               </div>

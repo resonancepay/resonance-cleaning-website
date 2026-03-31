@@ -93,14 +93,14 @@ export const FiveStarStandard = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-on-surface py-32">
+    <div ref={sectionRef} className="bg-on-surface py-16 lg:py-32">
       <GeneralWrapper>
         <Row gutter={80}>
-          <Col xs={12}>
+          <Col lg={12} xs={24} className="mb-10 lg:mb-0">
             <div>
               <h1
                 data-standard-copy
-                className="text-surface-container-lowest font-manrope text-5xl font-bold"
+                className="text-surface-container-lowest font-manrope text-4xl lg:text-5xl font-bold"
               >
                 The 5-Star Standard
               </h1>
@@ -108,10 +108,10 @@ export const FiveStarStandard = () => {
                 <div data-standard-copy className="flex gap-6 items-start">
                   <Image src={clinicalIcon} alt="" />
                   <div>
-                    <p className="font-bold font-manrope text-xl text-surface-container-lowest">
+                    <p className="font-bold font-manrope text:lg lg:text-xl text-surface-container-lowest">
                       Clinical Precision
                     </p>
-                    <p className="mt-2 text-base text-surface-container-lowest">
+                    <p className="mt-2 text-sm lg:text-base  text-surface-container-lowest/70">
                       We employ laboratory-grade inspection techniques to ensure
                       every corner meets a surgical standard of cleanliness.
                     </p>
@@ -120,10 +120,10 @@ export const FiveStarStandard = () => {
                 <div data-standard-copy className="flex gap-6 items-start">
                   <Image src={clinicalIcon} alt="" />
                   <div>
-                    <p className="font-bold font-manrope text-xl text-surface-container-lowest">
+                    <p className="font-bold font-manrope text:lg lg:text-xl text-surface-container-lowest">
                       DBS-Vetted Professionalism
                     </p>
-                    <p className="mt-2 text-base text-surface-container-lowest">
+                    <p className="mt-2 text-sm lg:text-base  text-surface-container-lowest/70">
                       Security is paramount. Every member of our staff undergoes
                       rigorous UK background checks and confidentiality
                       training.
@@ -133,10 +133,10 @@ export const FiveStarStandard = () => {
                 <div data-standard-copy className="flex gap-6 items-start">
                   <Image src={clinicalIcon} alt="" />
                   <div>
-                    <p className="font-bold font-manrope text-xl text-surface-container-lowest">
+                    <p className="font-bold font-manrope text:lg lg:text-xl text-surface-container-lowest">
                       Concierge-Led Management
                     </p>
-                    <p className="mt-2 text-base text-surface-container-lowest">
+                    <p className="mt-2 text-sm lg:text-base text-surface-container-lowest/70">
                       Dedicated account managers oversee every project, ensuring
                       your specific preferences are archived and executed
                       flawlessly.
@@ -146,7 +146,7 @@ export const FiveStarStandard = () => {
               </div>
             </div>
           </Col>
-          <Col xs={12}>
+          <Col lg={12} xs={24}>
             <div
               data-standard-panel
               className="h-full w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-8"

@@ -9,6 +9,8 @@ import houseIcon from "@/assets/svgs/house-icon.svg";
 import checkIcon from "@/assets/svgs/check-icon.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Button } from "@/common/components/button";
+import arrowRightLong from "@/assets/svgs/arrow-right.svg";
 
 export const ServicePillarSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -81,61 +83,71 @@ export const ServicePillarSection = () => {
 
   return (
     <GeneralWrapper>
-      <div ref={sectionRef} className="py-24">
+      <div ref={sectionRef} className=" py-16 lg:py-24">
         <div>
           <h1
             data-pillar-header
-            className="mb-3 text-4xl font-manrope font-bold text-on-surface"
+            className="mb-3 text-3xl lg:text-4xl font-manrope font-bold text-on-surface"
           >
             Our Service Pillars
           </h1>
-          <div className="flex items-center justify-between">
-            <p data-pillar-header className="w-1/2 text-base text-black">
+          <div className="flex lg:flex-row flex-col items-center justify-between">
+            <p
+              data-pillar-header
+              className="lg:w-1/2 w-full text-base text-grey-2"
+            >
               We provide a spectrum of elite management solutions designed to
               maintain the architectural integrity and aesthetic purity of your
               most valued assets.
             </p>
             <p
               data-pillar-header
-              className="text-sm font-manrope font-bold text-on-surface"
+              className="text-sm font-manrope w-full lg:w-auto text-right mt-6 lg:mt-0 font-bold text-on-surface tracking-widest"
             >
               EXCELLENCE BY DESIGN
             </p>
           </div>
         </div>
         <Row gutter={32} className="mt-20" data-pillar-cards>
-          <Col xs={16}>
+          <Col lg={16} xs={24}>
             <div
               data-pillar-card
               data-domestic-card
-              className="domestic-cleaning-bg flex h-125 flex-col items-start justify-end rounded-xl p-10"
+              className="domestic-cleaning-bg flex lg:h-125 h-75 flex-col items-start justify-end rounded-xl p-5 lg:p-10 mb-10  lg:mb-0"
             >
-              <p className="font-manrope text-4xl text-white font-bold">
+              <p className="font-manrope text-2xl lg:text-4xl text-white font-bold">
                 Domestic Estates
               </p>
-              <p className="my-6 w-1/2 text-surface-container-low text-base font-inter">
+              <p className="my-6 w-full lg:w-1/2 text-surface-container-low text-sm lg:text-base font-inter">
                 Personalized residential upkeep focused on delicate surfaces,
                 fine art preservation, and routine hospitality- grade cleaning.
               </p>
-              <button className="flex items-center gap-2">
+              <button className="hidden lg:flex items-center gap-2">
                 <p className="text-accent-lime font-inter font-semibold text-base">
                   Explore Bespoke Plans
                 </p>
                 <Image src={arrowRight} alt="" />
               </button>
+              <Button
+                rightIcon={arrowRightLong}
+                variant="lime"
+                className="w-full lg:hidden flex"
+              >
+                EXPLORE BESPOKE PLANS
+              </Button>
             </div>
           </Col>
-          <Col xs={8}>
+          <Col xs={24} lg={8}>
             <div
               data-pillar-card
-              className="flex h-full flex-col rounded-xl bg-on-surface p-10"
+              className="flex h-full flex-col rounded-xl bg-on-surface p-5 lg:p-10"
             >
               <Image src={houseIcon} alt="" />
-              <h3 className="mt-8 font-manrope text-4xl font-bold text-white">
+              <h3 className="mt-8 font-manrope text-2xl lg:text-4xl font-bold text-white">
                 Commercial Luxury
               </h3>
               <div className="flex flex-1 flex-col justify-between">
-                <p className="text-surface-container-low text-base mt-4 w-4/5">
+                <p className="text-surface-container-low text-base lg:text-base mt-4 w-full lg:w-4/5">
                   Elevating corporate environments to reflect brand prestige,
                   from executive boardrooms to boutique lobbies.
                 </p>
@@ -145,22 +157,23 @@ export const ServicePillarSection = () => {
                 >
                   <div data-commercial-item className="flex items-center gap-3">
                     <Image src={checkIcon} alt="" />
-                    <p className="text-surface-container-lowest text-sm">
+                    <p className="text-surface-container-lowest text-xs lg:text-sm">
                       After-hours Discretion
                     </p>
                   </div>
                   <div data-commercial-item className="flex items-center gap-3">
                     <Image src={checkIcon} alt="" />
-                    <p className="text-surface-container-lowest text-sm">
+                    <p className="text-surface-container-lowest text-xs lg:text-sm">
                       After-hours Discretion
                     </p>
                   </div>
                   <div data-commercial-item className="flex items-center gap-3">
                     <Image src={checkIcon} alt="" />
-                    <p className="text-surface-container-lowest text-sm">
+                    <p className="text-surface-container-lowest text-xs lg:text-sm">
                       After-hours Discretion
                     </p>
                   </div>
+                  
                 </div>
               </div>
             </div>
