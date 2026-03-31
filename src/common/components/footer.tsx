@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import cleaningServicesLogo from "@/assets/images/Cleaning Services-1.png";
 
+
 export function Footer() {
   return (
     <footer className="lg:pt-20 bg-surface-container-low">
