@@ -23,8 +23,9 @@
   --brand-muted: #64748b;
   --nav-active: #0f172a;
   --ambient-shadow: 0 16px 32px rgba(8, 10, 88, 0.06);
-  --grey-1: #E2E8F0;
-  --grey-2: #5B5F5C;
+  --grey-1: #e2e8f0;
+  --grey-2: #5b5f5c;
+  --grey-3: #f4f5f7;
 }
 
 @theme inline {
@@ -49,6 +50,7 @@
   --color-outline-variant: var(--outline-variant);
   --color-on-primary: var(--on-primary);
   --color-on-surface: var(--on-surface);
+  --color-grey-3: var(--grey-3);
   --color-on-surface-variant: var(--on-surface-variant);
   --color-brand-muted: var(--brand-muted);
   --color-grey: var(--grey-1);
@@ -449,7 +451,10 @@ textarea {
       rgba(8, 10, 88, 0.9) 100%
     ),
     url("../assets/images/domestic-cleaningpng.png");
-  background-position: center, center, right center;
+  background-position:
+    center,
+    center,
+    right center;
   background-repeat: no-repeat;
   background-size: cover;
 }
