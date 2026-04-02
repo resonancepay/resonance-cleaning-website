@@ -2,19 +2,95 @@
 
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import { Col, Row } from "antd";
-import bathroomImage from "@/assets/images/bathroom-3.jpg";
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { SubserviceWrapper } from "./subservice-wrapper";
 import { Button } from "@/common/components/button";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { StaticImageData } from "next/image";
 
-export const ServiceContainer = () => {
+type ServiceContainerProps = {
+  image: StaticImageData;
+  serviceName: string;
+  keyAreas: string[];
+  specialFocus: string[];
+  isReversed?: boolean;
+  onOpenDetails?: () => void;
+  revealImmediately?: boolean;
+};
+
+export const ServiceContainer = ({
+  image,
+  keyAreas,
+  serviceName,
+  specialFocus,
+  isReversed = false,
+  onOpenDetails,
+  revealImmediately = false,
+}: ServiceContainerProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) {
+      return;
+    }
+
+    if (revealImmediately) {
+      const imageWrap = sectionRef.current.querySelector("[data-service-image-wrap]");
+      const contentTargets = sectionRef.current.querySelectorAll("[data-service-content]");
+      const subserviceTargets = sectionRef.current.querySelectorAll("[data-subservice-item]");
+      const buttonTarget = sectionRef.current.querySelector("[data-service-button]");
+      const imageTarget = sectionRef.current.querySelector("[data-service-image]");
+
+      gsap.set(
+        [
+          imageWrap,
+          ...contentTargets,
+          ...subserviceTargets,
+          buttonTarget,
+          imageTarget,
+        ].filter(Boolean),
+        { clearProps: "all" },
+      );
+
+      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      if (imageWrap) {
+        timeline.fromTo(
+          imageWrap,
+          { autoAlpha: 0, y: 28, scale: 0.98 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.55 },
+        );
+      }
+
+      if (contentTargets.length > 0) {
+        timeline.fromTo(
+          contentTargets,
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.08 },
+          imageWrap ? "-=0.3" : 0,
+        );
+      }
+
+      if (subserviceTargets.length > 0) {
+        timeline.fromTo(
+          subserviceTargets,
+          { autoAlpha: 0, x: -12 },
+          { autoAlpha: 1, x: 0, duration: 0.35, stagger: 0.04 },
+          "-=0.18",
+        );
+      }
+
+      if (buttonTarget) {
+        timeline.fromTo(
+          buttonTarget,
+          { autoAlpha: 0, y: 14 },
+          { autoAlpha: 1, y: 0, duration: 0.35 },
+          "-=0.12",
+        );
+      }
+
       return;
     }
 
@@ -92,30 +168,30 @@ export const ServiceContainer = () => {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [revealImmediately]);
 
   return (
-    <section ref={sectionRef}>
+    <section ref={sectionRef} className="py-8 lg:py-12">
       <GeneralWrapper>
-        <Row gutter={{ lg: 64 }}>
-          <Col xs={14}>
+        <Row gutter={{ xs: 24, lg: 64 }}>
+          <Col xs={24} lg={14} className={isReversed ? "lg:order-2" : ""}>
             <div data-service-image-wrap className="overflow-hidden rounded-lg">
               <Image
                 data-service-image
-                className="w-full object-cover h-150 rounded-lg"
-                src={bathroomImage}
-                alt=""
+                className="h-80 w-full rounded-lg object-cover sm:h-110 lg:h-150"
+                src={image}
+                alt={serviceName}
               />
             </div>
           </Col>
-          <Col xs={8}>
-            <div className="h-full flex flex-col justify-between">
+          <Col xs={24} lg={8} className={isReversed ? "lg:order-1" : ""}>
+            <div className="flex h-full flex-col justify-between pt-8 lg:pt-0">
               <div>
                 <h1
                   data-service-content
-                  className="text-4xl font-manrope font-extrabold"
+                  className="text-3xl font-manrope font-extrabold sm:text-4xl"
                 >
-                  Bathroom Sanitation
+                  {serviceName}
                 </h1>
                 <div className="mt-6">
                   <h3
@@ -125,44 +201,35 @@ export const ServiceContainer = () => {
                     KEY FOCUS AREA
                   </h3>
                   <div data-subservice-list className="mt-5 flex flex-col gap-4">
-                    <div data-subservice-item>
-                      <SubserviceWrapper />
-                    </div>
-                    <div data-subservice-item>
-                      <SubserviceWrapper />
-                    </div>
-                    <div data-subservice-item>
-                      <SubserviceWrapper />
-                    </div>
-                    <div data-subservice-item>
-                      <SubserviceWrapper />
-                    </div>
-                    <div data-subservice-item>
-                      <SubserviceWrapper />
-                    </div>
-                    <div data-subservice-item>
-                      <SubserviceWrapper />
-                    </div>
+                    {keyAreas.map((item) => (
+                      <div key={item} data-subservice-item>
+                        <SubserviceWrapper text={item} />
+                      </div>
+                    ))}
                   </div>
                   <div
                     data-service-content
-                    className="mt-8 p-6 bg-grey-3 border-l-2 rounded-lg border-secondary"
+                    className="mt-8 rounded-lg border-l-2 border-secondary bg-grey-3 p-5 sm:p-6"
                   >
                     <div>
                       <h4 className="font-manrope text-xs font-extrabold">
                         SPECIAL FOCUS
                       </h4>
-                      <p className="mt-2 text-primary/70 font-manrope">
-                        Clinical-grade disinfection of high-touch areas,
-                        intensive mold & mildew removal, and comprehensive drain
-                        cleaning.
-                      </p>
+                      <div className="mt-3 flex flex-col gap-2">
+                        {specialFocus.map((item) => (
+                          <p key={item} className="font-manrope text-sm text-primary/70 sm:text-base">
+                            {item}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div data-service-button>
-                <Button className="py-4 w-full">Book Bathroom Service</Button>
+              <div data-service-button className="mt-8 lg:mt-6">
+                <Button className="w-full py-4" onClick={onOpenDetails}>
+                  Book {serviceName}
+                </Button>
               </div>
             </div>
           </Col>
