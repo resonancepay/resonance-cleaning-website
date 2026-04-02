@@ -88,7 +88,7 @@ export function ServiceDetailsModal({
       className="fixed inset-0 z-[100] overflow-y-auto bg-primary/30 backdrop-blur-sm"
       onClick={onClose}
     >
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-screen items-center justify-center p-3 sm:p-4">
         <div
           role="dialog"
           aria-modal="true"
@@ -96,7 +96,7 @@ export function ServiceDetailsModal({
           className="w-full max-w-4xl overflow-hidden rounded-[1.75rem] bg-white shadow-[0_30px_80px_rgba(8,10,88,0.2)]"
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex items-start justify-between gap-4 border-b border-primary/8 px-5 py-5 sm:px-7">
+          <div className="flex items-start justify-between gap-4 border-b border-primary/8 px-4 py-4 sm:px-7 sm:py-5">
             <div>
               <div className="inline-flex items-center gap-2 rounded-md bg-surface-container-low px-3 py-2">
                 <Image
@@ -110,7 +110,7 @@ export function ServiceDetailsModal({
               </div>
               <h2
                 id="service-modal-title"
-                className="mt-6 font-manrope text-2xl font-extrabold text-primary sm:text-4xl lg:text-6xl"
+                className="mt-4 font-manrope text-xl font-extrabold text-primary sm:mt-6 sm:text-4xl lg:text-6xl"
               >
                 {service.serviceName} Protocols
               </h2>
@@ -125,24 +125,26 @@ export function ServiceDetailsModal({
             </button>
           </div>
 
-          <div className="flex items-start p-8">
+          <div className="flex flex-col gap-8 p-4 sm:p-6 lg:flex-row lg:items-start lg:gap-10 lg:p-8">
             <div className="w-full">
               <p className="text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
                 Select Key Focus Areas
               </p>
-              <div className="mt-7 flex flex-col ">
+              <div className="mt-5 flex flex-col sm:mt-7">
                 {service.keyAreas.map((item) => (
                   <button
                     key={item}
                     type="button"
                     aria-pressed={selectedKeyAreas.includes(item)}
-                    className="flex items-center gap-3 rounded-xl px-1 py-2 text-left transition"
+                    className="flex items-start gap-3 rounded-xl px-1 py-2 text-left transition"
                     onClick={() => toggleKeyArea(item)}
                   >
                     <span className="mt-1 shrink-0">
                       <CheckMarker checked={selectedKeyAreas.includes(item)} />
                     </span>
-                    <p className="text-sm font-manrope text-primary">{item}</p>
+                    <p className="text-sm font-manrope leading-6 text-primary sm:text-base">
+                      {item}
+                    </p>
                   </button>
                 ))}
               </div>
@@ -161,7 +163,7 @@ export function ServiceDetailsModal({
                     {service.specialFocus.map((item) => (
                       <p
                         key={item}
-                        className="text-sm font-manrope text-primary/74"
+                        className="text-sm font-manrope leading-6 text-primary/74 sm:text-base"
                       >
                         • {item}
                       </p>
