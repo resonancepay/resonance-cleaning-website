@@ -67,7 +67,7 @@ export const HomeBanner = () => {
   return (
     <section
       ref={sectionRef}
-      className="home-banner-gradient relative flex h-screen min-h-screen w-full items-center overflow-hidden pt-20"
+      className="home-banner-gradient relative flex h-screen min-h-screen w-full items-center overflow-hidden lg:pt-20"
     >
       <div
         data-hero-bg
