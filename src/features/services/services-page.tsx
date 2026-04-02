@@ -9,9 +9,9 @@ import {
   type ServiceDetails,
 } from "./components/service-details-modal";
 import bathroomImage from "@/assets/images/bathroom-3.jpg";
-import sittingRoomImage from "@/assets/images/Luxury interior.png";
-import kitchenImage from "@/assets/images/domestic-cleaningpng.png";
-import bedroomImage from "@/assets/images/home-page-image.png";
+import sittingRoomImage from "@/assets/images/sitting-room.jpg";
+import kitchenImage from "@/assets/images/kitchen.jpg";
+import bedroomImage from "@/assets/images/bedroom.jpg";
 
 const services = [
   {
