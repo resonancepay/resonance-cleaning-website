@@ -57,14 +57,17 @@ export const ServiceBanner = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="h-[50vh] flex flex-col justify-center">
+    <div
+      ref={sectionRef}
+      className="flex min-h-[60svh] flex-col justify-center py-18 lg:h-[50vh] lg:min-h-0 lg:py-0"
+    >
       <GeneralWrapper>
         <div className="flex flex-col items-start">
           <div data-service-badge>
             <ServiceBadge />
           </div>
-          <div className="flex items-end justify-between mt-6">
-            <div className="text-7xl font-manrope font-extrabold">
+          <div className="mt-6 flex w-full flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+            <div className="text-4xl font-manrope font-extrabold leading-[0.95] sm:text-5xl lg:text-7xl">
               <p data-service-heading className="text-on-surface">
                 Our Bespoke
               </p>
@@ -72,10 +75,10 @@ export const ServiceBanner = () => {
                 Cleaning Protocols
               </p>
             </div>
-            <div className="flex w-1/2 items-center justify-end">
+            <div className="flex w-full items-center justify-start lg:w-1/2 lg:justify-end">
               <p
                 data-service-copy
-                className="text-on-surface/70 w-1/2  font-manrope text-lg"
+                className="w-full max-w-none font-manrope text-base leading-8 text-on-surface/70 lg:w-1/2 lg:text-lg"
               >
                 Meticulously designed maintenance protocols tailored for the
                 most discerning residential environments, room by room.

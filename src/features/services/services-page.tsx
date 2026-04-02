@@ -25,13 +25,13 @@ const services = [
       "Bathroom cabinets & shelves",
       "Floor (sweeping & mopping)",
       "Door handles & light switches",
-    ],
+    ] as string[],
     serviceName: "Bathroom Cleaning",
     specialFocus: [
       "Disinfection of high-touch areas",
       "Mold & mildew removal",
       "Drain cleaning",
-    ],
+    ] as string[],
   },
   {
     image: sittingRoomImage,
@@ -44,9 +44,13 @@ const services = [
       "Curtains & blinds",
       "Windows & window sills",
       "Floor (sweeping, mopping, or vacuuming)",
-    ],
+    ] as string[],
     serviceName: "Sitting Room",
-    specialFocus: ["Dust removal", "Upholstery cleaning", "Odor control"],
+    specialFocus: [
+      "Dust removal",
+      "Upholstery cleaning",
+      "Odor control",
+    ] as string[],
   },
   {
     image: kitchenImage,
@@ -59,13 +63,13 @@ const services = [
       "Refrigerator (optional deep clean)",
       "Dish rack & surfaces",
       "Floor",
-    ],
+    ] as string[],
     serviceName: "Kitchen Cleaning",
     specialFocus: [
       "Grease removal",
       "Food stain cleaning",
       "Sanitization of food prep areas",
-    ],
+    ] as string[],
   },
   {
     image: bedroomImage,
@@ -77,15 +81,15 @@ const services = [
       "Windows & curtains",
       "Carpets or floors",
       "Light switches & door handles",
-    ],
+    ] as string[],
     serviceName: "Bedroom Cleaning",
     specialFocus: [
       "Dusting & air freshness",
       "Organization (optional add-on)",
       "Linen changing",
-    ],
+    ] as string[],
   },
-] as const;
+];
 
 export function ServicesPage() {
   const [selectedService, setSelectedService] = useState<ServiceDetails | null>(
@@ -94,7 +98,11 @@ export function ServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const normalizeText = (value: string) =>
-    value.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
 
   const normalizedQuery = normalizeText(searchQuery);
   const filteredServices = services.filter((service) => {
@@ -187,8 +195,8 @@ export function ServicesPage() {
                 No Matching Service
               </p>
               <p className="mt-3 font-manrope text-base text-on-surface/68">
-                No service matches &quot;{searchQuery}&quot;. Try a service name, a sub-service, or a
-                focus area.
+                No service matches &quot;{searchQuery}&quot;. Try a service
+                name, a sub-service, or a focus area.
               </p>
             </div>
           </GeneralWrapper>

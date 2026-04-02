@@ -171,25 +171,25 @@ export const ServiceContainer = ({
   }, [revealImmediately]);
 
   return (
-    <section ref={sectionRef} className="py-8 lg:py-12">
+    <section ref={sectionRef} className="py-6 lg:py-12">
       <GeneralWrapper>
         <Row gutter={{ xs: 24, lg: 64 }}>
           <Col xs={24} lg={14} className={isReversed ? "lg:order-2" : ""}>
             <div data-service-image-wrap className="overflow-hidden rounded-lg">
               <Image
                 data-service-image
-                className="h-80 w-full rounded-lg object-cover sm:h-110 lg:h-150"
+                className="h-70 w-full rounded-lg object-cover sm:h-96 lg:h-150"
                 src={image}
                 alt={serviceName}
               />
             </div>
           </Col>
           <Col xs={24} lg={8} className={isReversed ? "lg:order-1" : ""}>
-            <div className="flex h-full flex-col justify-between pt-8 lg:pt-0">
+            <div className="flex h-full flex-col justify-between pt-6 lg:pt-0">
               <div>
                 <h1
                   data-service-content
-                  className="text-3xl font-manrope font-extrabold sm:text-4xl"
+                  className="text-2xl font-manrope font-extrabold sm:text-3xl lg:text-4xl"
                 >
                   {serviceName}
                 </h1>
@@ -209,7 +209,7 @@ export const ServiceContainer = ({
                   </div>
                   <div
                     data-service-content
-                    className="mt-8 rounded-lg border-l-2 border-secondary bg-grey-3 p-5 sm:p-6"
+                    className="mt-8 rounded-lg border-l-2 border-secondary bg-grey-3 p-4 sm:p-6"
                   >
                     <div>
                       <h4 className="font-manrope text-xs font-extrabold">
