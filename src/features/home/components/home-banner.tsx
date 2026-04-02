@@ -67,14 +67,14 @@ export const HomeBanner = () => {
   return (
     <section
       ref={sectionRef}
-      className="home-banner-gradient relative flex h-screen min-h-screen w-full items-center overflow-hidden"
+      className="home-banner-gradient relative flex h-screen min-h-screen w-full items-center overflow-hidden pt-20"
     >
       <div
         data-hero-bg
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(163,223,66,0.14),transparent_26%)]"
       />
       <GeneralWrapper>
-        <div className="flex lg:w-1/2 sm:w-4/5 w-full flex-col items-start">
+        <div className="flex lg:w-1/2 sm:w-4/5   w-full flex-col items-start">
           <div data-hero-copy>
             <BannerBadge />
           </div>
@@ -87,7 +87,7 @@ export const HomeBanner = () => {
           </p>
           <p
             data-hero-copy
-            className="mb-8 lg:w-1/2 sm:w-4/5 w-full text-lg font-inter font-semibold text-surface-container-lowest/80"
+            className="mb-8  sm:w-4/5  w-full text-lg font-inter font-semibold text-surface-container-lowest/80"
           >
             Redefining the standards of luxury maintenance across the United
             Kingdom. Impeccable, quiet, and authoritative service tailored to
