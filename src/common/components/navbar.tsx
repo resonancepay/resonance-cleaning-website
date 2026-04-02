@@ -76,7 +76,7 @@ export function Navbar() {
 
   return (
     <>
-      <div className="navbar-shell fixed top-0 z-20 hidden w-full py-2 md:block">
+      <div className="navbar-shell fixed top-0 z-20 hidden w-full pt-1 md:block">
         <GeneralWrapper>
           <div className="flex items-center justify-between">
             <div className="relative flex flex-col">
@@ -96,7 +96,7 @@ export function Navbar() {
             <div className="flex items-center justify-center gap-5">
               <nav
                 aria-label="Primary"
-                className="flex items-center gap-x-3 text-sm text-[var(--brand-muted)]"
+                className="flex items-center gap-x-3 text-sm text-brand-muted"
               >
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
