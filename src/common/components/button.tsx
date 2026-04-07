@@ -5,7 +5,14 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import type { StaticImageData } from "next/image";
 import { twMerge } from "tailwind-merge";
 
-type ButtonVariant = "primary" | "secondary" | "tertiary" | "lime" | "glass";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "lime"
+  | "glass"
+  | "white"
+  | "transparent";
 type ButtonIcon = ReactNode | StaticImageData | string;
 
 type BaseButtonProps = {
@@ -69,6 +76,16 @@ function getButtonClassName(variant: ButtonVariant) {
       return twMerge(
         baseClassName,
         "rounded-[0.5rem] border border-white/20 bg-white/10 px-8 py-4 text-base leading-6 !text-white backdrop-blur-[24px] hover:translate-y-[-1px] hover:bg-white/14"
+      );
+    case "white":
+      return twMerge(
+        baseClassName,
+        "min-h-10 rounded-[0.5rem] border border-white bg-white px-6 py-2.5 text-sm leading-5 !text-primary hover:translate-y-[-1px] hover:bg-white/95"
+      );
+    case "transparent":
+      return twMerge(
+        baseClassName,
+        "min-h-10 rounded-[0.5rem] border border-white/30 bg-transparent px-6 py-2.5 text-sm leading-5 !text-white hover:translate-y-[-1px] hover:bg-white/6"
       );
     case "primary":
     default:

@@ -26,6 +26,8 @@
   --grey-1: #e2e8f0;
   --grey-2: #5b5f5c;
   --grey-3: #f4f5f7;
+  --grey-4: #44474E;
+  --grey-5: #F4F4F9;
 }
 
 @theme inline {
@@ -42,6 +44,8 @@
   --color-on-tertiary-fixed: var(--on-tertiary-fixed);
   --color-surface: var(--surface);
   --color-grey-2: var(--grey-2);
+  --color-grey-4: var(--grey-4);
+  --color-grey-5: var(--grey-5);
   --color-surface-container-lowest: var(--surface-container-lowest);
   --color-surface-container-low: var(--surface-container-low);
   --color-surface-container: var(--surface-container);

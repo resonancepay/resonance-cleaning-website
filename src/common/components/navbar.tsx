@@ -12,6 +12,7 @@ const navigation = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/get-a-quote", label: "Get a Quote" },
+  { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact Us" },
 ];
 
@@ -25,7 +26,12 @@ const mobileNavigation = [
 
 function HomeIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="currentColor"
+      aria-hidden="true"
+    >
       <path d="M12 3.5 4 10v10.5h5.5v-6h5v6H20V10l-8-6.5Z" />
     </svg>
   );
@@ -33,7 +39,14 @@ function HomeIcon() {
 
 function ServicesIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      aria-hidden="true"
+    >
       <path d="M7 4.5 12 1.5 17 4.5 12 8.5 7 4.5Z" />
       <path d="M7 11 12 8l5 3-5 4-5-4Z" />
       <path d="M7 17.5 12 14.5l5 3-5 4-5-4Z" />
@@ -43,7 +56,14 @@ function ServicesIcon() {
 
 function QuoteIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      aria-hidden="true"
+    >
       <path d="M6 3.5h9l3 3V20.5H6z" />
       <path d="M15 3.5v4h4" />
       <path d="M9 11.5h6" />
@@ -54,7 +74,14 @@ function QuoteIcon() {
 
 function AboutIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="8.5" />
       <path d="M12 10v6" />
       <circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none" />
@@ -64,7 +91,14 @@ function AboutIcon() {
 
 function ContactIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      aria-hidden="true"
+    >
       <path d="M3.5 6.5h17v11h-17z" />
       <path d="m4.5 7.5 7.5 6 7.5-6" />
     </svg>

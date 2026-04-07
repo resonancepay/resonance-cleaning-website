@@ -129,7 +129,7 @@ export function ServicesPage() {
       <ServiceBanner />
       <section className="pb-4">
         <GeneralWrapper>
-          <div className="rounded-[1.5rem] border border-primary/8 bg-white p-4 shadow-[0_16px_40px_rgba(8,10,88,0.06)] sm:p-5">
+          <div className="rounded-3xl border border-primary/8 bg-white p-4 shadow-[0_16px_40px_rgba(8,10,88,0.06)] sm:p-5">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
