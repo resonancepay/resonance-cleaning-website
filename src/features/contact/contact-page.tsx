@@ -1,29 +1,15 @@
 "use client";
 
+import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
+import { Button } from "@/common/components/button";
+import { Col, Row } from "antd";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
-
-const contactChannels = [
-  {
-    label: "Email",
-    value: "hello@resonancecleaning.com",
-    description: "Best for briefs, access notes, and ongoing service coordination.",
-  },
-  {
-    label: "Phone",
-    value: "+234 800 000 0000",
-    description: "For urgent scheduling updates and inspection requests.",
-  },
-  {
-    label: "Hours",
-    value: "Mon - Sat / 7am - 8pm",
-    description: "After-hours coordination remains available for active clients.",
-  },
-];
 
 export function ContactPage() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) {
@@ -37,53 +23,50 @@ export function ContactPage() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      gsap.set("[data-contact-hero]", { autoAlpha: 0, y: 28 });
-      gsap.set("[data-contact-card]", { autoAlpha: 0, y: 28, scale: 0.98 });
-      gsap.set("[data-contact-glow]", { scale: 0.84, opacity: 0.22 });
-      gsap.set("[data-contact-rule]", { scaleX: 0, transformOrigin: "left center" });
-      gsap.set("[data-contact-panel]", { autoAlpha: 0, y: 18, scale: 0.98 });
+      gsap.set("[data-contact-glow]", { scale: 0.82, opacity: 0.22 });
+      gsap.set("[data-contact-art]", { autoAlpha: 0, x: 28, rotate: -2, scale: 0.96 });
+      gsap.set("[data-contact-eyebrow]", { autoAlpha: 0, y: 18 });
+      gsap.set("[data-contact-title]", { autoAlpha: 0, y: 42 });
+      gsap.set("[data-contact-orb]", { scale: 0.72, opacity: 0.14 });
+      gsap.set("[data-contact-card]", { autoAlpha: 0, y: 26, scale: 0.96 });
 
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          once: true,
-        },
-        defaults: { ease: "power3.out" },
-      });
+      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       timeline
         .to("[data-contact-glow]", {
           scale: 1,
-          opacity: 0.38,
-          duration: 1.2,
+          opacity: 0.4,
+          duration: 1.4,
         })
         .to(
-          "[data-contact-hero]",
+          "[data-contact-eyebrow]",
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.65,
           },
-          "-=0.55",
+          "-=0.7",
         )
         .to(
-          "[data-contact-rule]",
-          {
-            scaleX: 1,
-            duration: 0.55,
-          },
-          "-=0.35",
-        )
-        .to(
-          "[data-contact-panel]",
+          "[data-contact-title]",
           {
             autoAlpha: 1,
             y: 0,
+            duration: 0.95,
+            stagger: 0.08,
+          },
+          "-=0.45",
+        )
+        .to(
+          "[data-contact-art]",
+          {
+            autoAlpha: 1,
+            x: 0,
+            rotate: 0,
             scale: 1,
-            duration: 0.7,
+            duration: 1,
           },
-          "-=0.4",
+          "-=0.7",
         )
         .to(
           "[data-contact-card]",
@@ -91,24 +74,34 @@ export function ContactPage() {
             autoAlpha: 1,
             y: 0,
             scale: 1,
-            duration: 0.75,
-            stagger: 0.08,
+            duration: 0.8,
           },
-          "-=0.4",
+          "-=0.45",
         );
 
       gsap.to("[data-contact-glow]", {
         yPercent: -8,
-        xPercent: 5,
-        duration: 7.5,
+        xPercent: 4,
+        rotation: 6,
+        duration: 8,
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
       });
 
-      gsap.to("[data-contact-panel]", {
-        yPercent: -2,
-        duration: 5,
+      gsap.to("[data-contact-orb]", {
+        yPercent: -8,
+        xPercent: 6,
+        rotation: 12,
+        duration: 6.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      gsap.to("[data-contact-card]", {
+        yPercent: -4,
+        duration: 4.8,
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
@@ -120,91 +113,355 @@ export function ContactPage() {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    if (!detailsRef.current) {
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.set("[data-contact-section-title]", { autoAlpha: 0, y: 26 });
+      gsap.set("[data-contact-detail-card]", { autoAlpha: 0, y: 24, rotateX: 8 });
+      gsap.set("[data-contact-detail-field]", { autoAlpha: 0, y: 18 });
+      gsap.set("[data-contact-detail-panel]", { autoAlpha: 0, x: 26, scale: 0.98 });
+      gsap.set("[data-contact-detail-fact]", { autoAlpha: 0, y: 20 });
+      gsap.set("[data-submit-button]", { scale: 1 });
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: detailsRef.current,
+          start: "top 76%",
+          once: true,
+        },
+        defaults: { ease: "power3.out" },
+      });
+
+      timeline
+        .to("[data-contact-section-title]", {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.7,
+        })
+        .to(
+          "[data-contact-detail-card]",
+          {
+            autoAlpha: 1,
+            y: 0,
+            rotateX: 0,
+            duration: 0.85,
+            stagger: 0.1,
+          },
+          "-=0.35",
+        )
+        .to(
+          "[data-contact-detail-field]",
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.55,
+            stagger: 0.08,
+          },
+          "-=0.45",
+        )
+        .to(
+          "[data-contact-detail-panel]",
+          {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.9,
+          },
+          "-=0.55",
+        )
+        .to(
+          "[data-contact-detail-fact]",
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.08,
+          },
+          "-=0.45",
+        )
+        .to(
+          "[data-submit-button]",
+          {
+            scale: 1.03,
+            duration: 0.35,
+            yoyo: true,
+            repeat: 1,
+          },
+          "-=0.15",
+        );
+
+      gsap.to("[data-contact-detail-panel]", {
+        yPercent: -3,
+        duration: 5.2,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+    }, detailsRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
     <main className="flex-1">
       <section
         ref={sectionRef}
-        className="relative overflow-hidden bg-primary"
+        className="relative flex min-h-[52svh] flex-col justify-center overflow-hidden bg-primary py-14 sm:min-h-[60svh] sm:py-16 lg:min-h-screen lg:py-0"
       >
         <div
           data-contact-glow
-          className="pointer-events-none absolute -left-8 top-10 h-48 w-48 rounded-full bg-[radial-gradient(circle_at_center,rgba(163,223,66,0.18)_0%,rgba(163,223,66,0.06)_36%,transparent_74%)] blur-[1px] lg:h-72 lg:w-72"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(163,223,66,0.18),transparent_24%),radial-gradient(circle_at_84%_76%,rgba(184,245,86,0.1),transparent_20%),radial-gradient(circle_at_60%_40%,rgba(255,255,255,0.08),transparent_26%)]"
+        />
+        <div
+          className="pointer-events-none absolute -right-16 top-12 h-44 w-44 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.04)_44%,transparent_74%)] blur-[2px] lg:h-72 lg:w-72"
           aria-hidden="true"
         />
 
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 py-4 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:px-10 lg:py-6">
-          <div
-            data-contact-hero
-            className="relative flex min-h-[72svh] overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#080a58_0%,#090f68_48%,#101777_100%)] px-7 py-8 sm:px-10 sm:py-10 lg:min-h-[calc(100svh-3rem)] lg:px-14 lg:py-14"
-          >
-            <div className="accent-orb" aria-hidden="true" />
-            <div className="relative flex w-full flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-3xl lg:max-w-[40rem]">
-                <div className="mb-5 flex items-center gap-4">
-                  <span
-                    data-contact-rule
-                    className="h-px w-12 bg-accent-lime/85 sm:w-16"
-                  />
-                  <p className="label-text text-[var(--accent-lime)]">
-                    Inquiry concierge
+        <GeneralWrapper>
+          <div className="relative flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-14">
+            <div className="w-full max-w-3xl lg:w-[55%]">
+              <p
+                data-contact-eyebrow
+                className="text-accent-lime tracking-widest text-xs sm:text-sm"
+              >
+                Inquiry concierge
+              </p>
+              <p
+                data-contact-title
+                className="mt-5 text-3xl font-manrope font-extrabold leading-[1.02] sm:mt-6 sm:text-5xl lg:text-7xl lg:leading-[1]"
+              >
+                <span className="text-white">Concierge</span> <br />
+                <span className="text-white">Support</span> <br />
+                <span className="text-white">at Your Service.</span>
+              </p>
+            </div>
+
+            <div
+              data-contact-art
+              className="relative w-full lg:w-[45%]"
+              aria-hidden="true"
+            >
+              <div className="relative mx-auto flex min-h-[20rem] w-full max-w-[34rem] items-center justify-center overflow-hidden rounded-[2rem] border border-white/12 bg-white/6 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.22)] backdrop-blur-2xl sm:min-h-[24rem] sm:p-6 lg:min-h-[34rem] lg:p-8">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_28%,rgba(163,223,66,0.22),transparent_18%),radial-gradient(circle_at_72%_70%,rgba(255,255,255,0.09),transparent_20%),linear-gradient(135deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.02)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(255,255,255,0.06)_0%,transparent_28%,transparent_72%,rgba(255,255,255,0.05)_100%)]" />
+                <div
+                  data-contact-orb
+                  className="absolute -left-10 top-8 h-24 w-24 rounded-full bg-[radial-gradient(circle_at_center,rgba(163,223,66,0.34)_0%,rgba(163,223,66,0.08)_42%,transparent_76%)] blur-[1px] lg:h-32 lg:w-32"
+                />
+                <div className="absolute right-8 top-8 h-20 w-20 rounded-full border border-white/12 bg-white/6 blur-[0.2px] lg:h-28 lg:w-28" />
+                <div className="absolute bottom-10 left-8 h-28 w-28 rounded-full border border-white/8 bg-white/5 lg:h-40 lg:w-40" />
+
+                <div
+                  data-contact-card
+                  className="relative z-10 mx-auto w-full max-w-[20rem] rounded-[1.5rem] border border-white/14 bg-primary/35 px-4 py-4 text-white shadow-[0_24px_55px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:max-w-sm sm:px-5 sm:py-5"
+                >
+                  <p className="text-sm leading-7 text-white/85 sm:text-lg sm:leading-8">
+                    Experience the pinnacle of estate management with dedicated support tailored to your
+                    lifestyle and standards.
                   </p>
                 </div>
-                <h1 className="max-w-3xl text-5xl font-semibold leading-[0.92] tracking-[-0.02em] text-[var(--on-primary)] sm:text-6xl lg:text-7xl xl:text-[5.8rem]">
-                  Concierge
-                  <br />
-                  Support
-                  <br />
-                  at Your Service.
-                </h1>
-                <p className="mt-7 max-w-xl text-base leading-8 tracking-[0.01em] text-white/76 sm:text-lg">
-                  Use this page for direct conversations, site reviews, or handoff planning for new spaces
-                  entering the schedule.
-                </p>
-              </div>
-
-              <div
-                data-contact-panel
-                className="w-full max-w-md self-start rounded-[1.5rem] border border-white/10 bg-white/8 p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.16)] backdrop-blur-2xl sm:p-8 lg:mb-12"
-              >
-                <p className="text-sm font-manrope font-bold uppercase tracking-[0.22em] text-accent-lime">
-                  Experience
-                </p>
-                <p className="mt-5 max-w-md text-lg leading-8 text-white/82 sm:text-xl sm:leading-9">
-                  Experience the pinnacle of estate management with dedicated support tailored to your lifestyle and standards.
-                </p>
               </div>
             </div>
           </div>
-        </div>
+        </GeneralWrapper>
+      </section>
 
-        <div className="-mt-10 px-5 pb-12 sm:px-8 lg:-mt-20 lg:px-10 lg:pb-16">
-          <div className="mx-auto max-w-7xl">
-            <div
-              data-contact-shell
-              className="surface-group rounded-[2rem] p-4 sm:p-6"
-            >
-              <div className="grid gap-4">
-                {contactChannels.map((channel, index) => (
+      <section
+        ref={detailsRef}
+        className="-mt-8 px-4 pb-10 sm:-mt-10 sm:px-6 sm:pb-12 lg:-mt-20 lg:px-10 lg:pb-16"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="surface-group rounded-[2rem] p-3 sm:p-5 lg:p-8">
+            <Row gutter={{ xs: 16, sm: 20, lg: 32 }} align="stretch">
+              <Col xs={24} lg={8}>
+                <div className="flex h-full flex-col gap-4 sm:gap-5 lg:gap-6">
                   <article
-                    key={channel.label}
-                    data-contact-card
-                    className={`rounded-[1.5rem] p-7 ${
-                      index % 2 === 0 ? "surface-panel" : "surface-soft"
-                    }`}
+                    data-contact-detail-card
+                    className="surface-panel rounded-[1.5rem] p-5 sm:p-7 lg:p-9"
                   >
-                    <p className="label-text text-[var(--secondary-dark-green)]">
-                      {channel.label}
+                    <p className="font-manrope text-xl font-extrabold tracking-[-0.02em] text-[var(--primary)] sm:text-2xl lg:text-[2rem]">
+                      The Estate Office
                     </p>
-                    <h2 className="mt-4 text-2xl sm:text-3xl font-semibold leading-tight tracking-[-0.02em] text-[var(--primary)]">
-                      {channel.value}
-                    </h2>
-                    <p className="mt-4 text-sm leading-7 tracking-[0.01em] text-[var(--on-surface-variant)] sm:text-base sm:leading-8">
-                      {channel.description}
-                    </p>
+
+                    <div className="mt-6 space-y-5 border-t border-[var(--line)] pt-5 sm:mt-8 sm:space-y-6 sm:pt-6">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-bold text-white sm:h-11 sm:w-11">
+                          ⌖
+                        </div>
+                        <div>
+                          <p className="label-text text-[var(--secondary-dark-green)]">
+                            London HQ
+                          </p>
+                          <p className="mt-2 text-sm leading-7 text-[var(--primary)] sm:text-base sm:leading-8">
+                            Berkeley Square House
+                            <br />
+                            Mayfair, London
+                            <br />
+                            W1J 6ED
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 border-t border-[var(--line)] pt-5 sm:gap-4 sm:pt-6">
+                        <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-bold text-white sm:h-11 sm:w-11">
+                          ?
+                        </div>
+                        <div>
+                          <p className="label-text text-[var(--secondary-dark-green)]">
+                            Direct Line
+                          </p>
+                          <p className="mt-2 text-sm leading-7 text-[var(--primary)] sm:text-base sm:leading-8">
+                            +44 (0) 20 7946 0123
+                            <br />
+                            concierge@polishedestate.com
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 border-t border-[var(--line)] pt-5 sm:gap-4 sm:pt-6">
+                        <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-bold text-white sm:h-11 sm:w-11">
+                          ◔
+                        </div>
+                        <div>
+                          <p className="label-text text-[var(--secondary-dark-green)]">
+                            Operating Hours
+                          </p>
+                          <p className="mt-2 text-sm leading-7 text-[var(--primary)] sm:text-base sm:leading-8">
+                            Mon - Fri: 08:00 - 20:00
+                            <br />
+                            Sat: 09:00 - 17:00
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-5 flex items-center gap-3 border-t border-[var(--line)] pt-4 sm:mt-6 sm:pt-5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[var(--secondary-dark-green)]" />
+                      <p className="label-text text-[var(--secondary-dark-green)]">
+                        Concierge currently online
+                      </p>
+                    </div>
                   </article>
-                ))}
-              </div>
-            </div>
+
+                  <div
+                    data-contact-detail-card
+                    className="surface-soft h-44 overflow-hidden rounded-[1.5rem] sm:h-52 lg:h-56"
+                  >
+                    <div className="flex h-full items-center justify-center bg-[linear-gradient(135deg,rgba(17,18,96,0.18)_0%,rgba(17,18,96,0.04)_100%)] px-6 text-center">
+                      <div>
+                        <p className="font-manrope text-lg font-bold tracking-[-0.02em] text-[var(--primary)]">
+                          Private support
+                        </p>
+                        <p className="mt-3 text-sm leading-7 text-[var(--on-surface-variant)]">
+                          We respond with the same level of care, clarity, and discretion reflected in the
+                          quote flow.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+
+              <Col xs={24} lg={16}>
+                <div
+                  data-contact-detail-panel
+                  className="surface-panel rounded-[1.75rem] p-5 sm:p-7 lg:p-10"
+                >
+                  <p className="font-manrope text-2xl font-extrabold tracking-[-0.03em] text-[var(--primary)] sm:text-3xl lg:text-[2.25rem]">
+                    Service Inquiry
+                  </p>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--on-surface-variant)] sm:mt-4 sm:text-base sm:leading-8">
+                    Complete the details below, and a member of our private management team will contact you
+                    within two hours.
+                  </p>
+
+                  <div className="mt-7 lg:mt-10">
+                    <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2 lg:gap-8">
+                      <div className="w-full" data-contact-detail-field>
+                        <label className="text-[var(--secondary-dark-green)] tracking-widest uppercase text-[11px] font-manrope font-extrabold sm:text-xs">
+                          Full Name
+                        </label>
+                        <input
+                          className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
+                          placeholder="e.g. Alexander Hamilton"
+                        />
+                      </div>
+                      <div className="w-full" data-contact-detail-field>
+                        <label className="text-[var(--secondary-dark-green)] uppercase tracking-widest text-[11px] font-manrope font-extrabold sm:text-xs">
+                          Postcode
+                        </label>
+                        <input
+                          className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
+                          placeholder="e.g. W1J 6ED"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 grid gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-6 lg:mt-8 lg:grid-cols-2 lg:gap-8">
+                      <div className="w-full" data-contact-detail-field>
+                        <label className="text-[var(--secondary-dark-green)] tracking-widest uppercase text-[11px] font-manrope font-extrabold sm:text-xs">
+                          Email Address
+                        </label>
+                        <input
+                          className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
+                          placeholder="name@domain.com"
+                        />
+                      </div>
+                      <div className="w-full" data-contact-detail-field>
+                        <label className="text-[var(--secondary-dark-green)] uppercase tracking-widest text-[11px] font-manrope font-extrabold sm:text-xs">
+                          Preferred Service
+                        </label>
+                        <div className="relative mt-2">
+                          <select className="bg-[#F4F5F7] w-full appearance-none text-sm font-manrope py-3.5 px-4 pr-12 text-[var(--primary)] sm:text-base">
+                            <option>Signature Estate Cleaning</option>
+                            <option>Deep Cleaning</option>
+                            <option>Move-In / Move-Out</option>
+                            <option>Post-Renovation Cleaning</option>
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-[var(--primary)]/60">
+                            <span className="text-lg">⌄</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 lg:mt-8">
+                      <div className="w-full" data-contact-detail-field>
+                        <label className="text-[var(--secondary-dark-green)] tracking-widest uppercase text-[11px] font-manrope font-extrabold sm:text-xs">
+                          Specific Requirements
+                        </label>
+                        <textarea
+                          rows={5}
+                          className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
+                          placeholder="How may we assist you today?"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-8 sm:mt-10">
+                      <Button
+                        variant="lime"
+                        className="w-full py-4 sm:w-auto sm:min-w-56"
+                        data-submit-button
+                      >
+                        SUBMIT INQUIRY
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </div>
         </div>
       </section>
