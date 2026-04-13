@@ -8,14 +8,14 @@ import React from "react";
 
 export const VisionBanner = () => {
   return (
-    <div className="h-screen flex items-center">
+    <div className="flex items-center py-16 lg:h-screen lg:py-0">
       <GeneralWrapper>
-        <Row>
-          <Col xs={10}>
-            <div className=" items-center  flex justify-center ">
-              <div className="relative">
-                <Image src={visionIcon} alt="" />
-                <div className="absolute border-l-4 border-accent-lime -bottom-6 -right-12 p-8 bg-primary rounded-lg">
+        <Row gutter={{ lg: 32 }} align="middle">
+          <Col xs={24} lg={10} className="mb-10 lg:mb-0 order-2 lg:order-1">
+            <div className="flex items-center justify-center">
+              <div className="relative w-full max-w-[34rem]">
+                <Image src={visionIcon} alt="" className="w-full" />
+                <div className="absolute bottom-4 right-4 border-l-4 border-accent-lime bg-primary rounded-lg p-4 sm:p-6 lg:-bottom-6 lg:-right-12 lg:p-8">
                   <Image src={shieldPlain} alt="" />
                   <div className="mt-4">
                     <p className="text-white font-manrope font-bold text-lg">
@@ -26,19 +26,19 @@ export const VisionBanner = () => {
               </div>
             </div>
           </Col>
-          <Col xs={12}>
+          <Col xs={24} lg={12} className="order-1 lg:order-2">
             <div className="flex  h-full flex-col justify-center">
-              <h3 className="text-primary font-manrope font-extrabold text-4xl mb-8">
+              <h3 className="mb-8 font-manrope text-4xl font-extrabold text-primary">
                 THE VISION
               </h3>
               <div>
-                <p className="text-lg font-manrope text-grey-4">
+                <p className="font-manrope text-lg text-grey-4">
                   The Polished Estate was born from a singular observation: the
                   UK&apos;s most prestigious residences require more than a
                   standard cleaning service. They require a bespoke concierge
                   approach that treats every surface with archival care.
                 </p>
-                <p className="text-lg font-manrope text-grey-4 mt-4">
+                <p className="mt-4 font-manrope text-lg text-grey-4">
                   Our vision is to elevate domestic service into a seamless,
                   invisible art form. We believe that true luxury is found in
                   the details—the perfectly aligned cushion, the streak-free
@@ -47,20 +47,20 @@ export const VisionBanner = () => {
                 </p>
 
                 <div className="mt-8 pt-12 border-t border-primary/10">
-                  <Row>
+                  <Row gutter={[16, 16]}>
                     <Col xs={12}>
-                      <h3 className="text-primary text-4xl font-manrope font-extrabold">
+                      <h3 className="font-manrope text-4xl font-extrabold text-primary">
                         5-Star
                       </h3>
-                      <p className="text-secondary text-xs tracking-widest mt-1 font-manrope font-bold">
+                      <p className="mt-1 font-manrope text-xs font-bold tracking-widest text-secondary">
                         SERVICE RATING
                       </p>
                     </Col>
                     <Col xs={12}>
-                      <h3 className="text-primary text-4xl font-manrope font-extrabold">
+                      <h3 className="font-manrope text-4xl font-extrabold text-primary">
                         100%
                       </h3>
-                      <p className="text-secondary text-xs tracking-widest mt-1 font-manrope font-bold">
+                      <p className="mt-1 font-manrope text-xs font-bold tracking-widest text-secondary">
                         BESPOKE APPROACH
                       </p>
                     </Col>

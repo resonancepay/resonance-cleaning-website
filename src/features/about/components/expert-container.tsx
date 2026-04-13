@@ -10,20 +10,20 @@ export const ExperContainer = () => {
   return (
     <>
       <GeneralWrapper>
-        <div className="min-h-[80vh] h-[80vh] flex-col flex items-center justify-center bg-grey-5">
+        <div className="flex flex-col items-center justify-center bg-grey-5 py-16 lg:min-h-[80vh] lg:h-[80vh] lg:py-0">
           <div>
-            <h1 className="font-manrope font-extrabold text-primary text-4xl text-center">
+            <h1 className="text-center font-manrope text-4xl font-extrabold text-primary">
               OUR EXPERT TEAM
             </h1>
-            <p className="text-grey-4 font-manrope font-medium text-base w-[70%] mx-auto text-center mt-4">
+            <p className="mx-auto mt-4 w-full max-w-2xl text-center font-manrope text-base font-medium text-grey-4">
               Selected for their discretion, trained for precision, and
               committed to the highest tier of service excellence.
             </p>
           </div>
-          <div className="mt-18 w-full">
-            <Row gutter={32}>
-              <Col xs={8}>
-                <div className="bg-white w-full p-12 rounded-sm">
+          <div className="mt-12 w-full lg:mt-18">
+            <Row gutter={[32, 24]}>
+              <Col xs={24} lg={8}>
+                <div className="w-full rounded-sm bg-white p-8 sm:p-10 lg:p-12">
                   <Image src={shieldGrey} alt="" />
                   <p className="tracking-widest mt-8 mb-4 text-primary text-sm font-manrope font-extrabold">
                     DBS CERTIFIED
@@ -35,8 +35,8 @@ export const ExperContainer = () => {
                   </p>
                 </div>
               </Col>
-              <Col xs={8}>
-                <div className="bg-primary border-b-4 border-secondary w-full p-12 rounded-sm relative -top-6">
+              <Col xs={24} lg={8}>
+                <div className="relative w-full rounded-sm border-b-4 border-secondary bg-primary p-8 sm:p-10 lg:-top-6 lg:p-12">
                   <Image src={greenBadge} alt="" />
                   <p className="tracking-widest mt-8 mb-4 text-white text-sm font-manrope font-extrabold">
                     Elite Training
@@ -48,8 +48,8 @@ export const ExperContainer = () => {
                   </p>
                 </div>
               </Col>
-              <Col xs={8}>
-                <div className="bg-white w-full p-12 rounded-sm">
+              <Col xs={24} lg={8}>
+                <div className="w-full rounded-sm bg-white p-8 sm:p-10 lg:p-12">
                   <Image src={shieldVariant} alt="" />
                   <p className="tracking-widest mt-8 mb-4 text-primary text-sm font-manrope font-extrabold">
                     Discreet Presence

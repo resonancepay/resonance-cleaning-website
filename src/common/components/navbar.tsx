@@ -11,16 +11,16 @@ import { GeneralWrapper } from "./wrapper/general-wrapper";
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/get-a-quote", label: "Get a Quote" },
   { href: "/about", label: "About Us" },
+  { href: "/get-a-quote", label: "Get a Quote" },
   { href: "/contact", label: "Contact Us" },
 ];
 
 const mobileNavigation = [
   { href: "/", label: "Home", icon: HomeIcon },
   { href: "/services", label: "Services", icon: ServicesIcon },
+  { href: "/about", label: "About", icon: AboutIcon },
   { href: "/get-a-quote", label: "Quote", icon: QuoteIcon },
-  { href: "/#about", label: "About", icon: AboutIcon },
   { href: "/contact", label: "Contact", icon: ContactIcon },
 ];
 
