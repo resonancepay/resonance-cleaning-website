@@ -1,20 +1,97 @@
- "use client";
+"use client";
 
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import { Col, Row } from "antd";
-import companyIcon from "@/assets/svgs/company-green-icon.svg";
-import starIcon from "@/assets/svgs/star-green.svg";
-import homeIcon from "@/assets/svgs/home-green-icon.svg";
 import Image from "next/image";
 import { Button } from "@/common/components/button";
 import star from "@/assets/svgs/star-icon.svg";
 import checkOutline from "@/assets/svgs/check-outline.svg";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSearchParams } from "next/navigation";
+import {
+  findServiceProtocolBySlug,
+  serviceProtocols,
+} from "@/features/services/data/service-protocols";
 
 export const QuoteDetails = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const personalDetailsRef = useRef<HTMLDivElement>(null);
+  const specialAreasRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+  const incomingService = searchParams.get("service");
+  const incomingAreas = searchParams.get("areas");
+  const initialSelectedServiceSlug = useMemo(
+    () =>
+      findServiceProtocolBySlug(incomingService)?.slug ??
+      serviceProtocols[0]?.slug ??
+      "",
+    [incomingService],
+  );
+  const [selectedServiceSlug, setSelectedServiceSlug] = useState(
+    initialSelectedServiceSlug,
+  );
+  const initialSelectedKeyAreas = useMemo(() => {
+    if (!incomingAreas) {
+      return [];
+    }
+
+    return incomingAreas
+      .split("|")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }, [incomingAreas]);
+  const [selectedKeyAreas, setSelectedKeyAreas] = useState<string[]>(
+    initialSelectedKeyAreas,
+  );
+  const selectedService = useMemo(
+    () =>
+      serviceProtocols.find((service) => service.slug === selectedServiceSlug) ??
+      serviceProtocols[0] ??
+      null,
+    [selectedServiceSlug],
+  );
+
+  useEffect(() => {
+    if (!incomingService) {
+      return;
+    }
+
+    const rafId = window.requestAnimationFrame(() => {
+      personalDetailsRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+    };
+  }, [incomingService]);
+
+  const handleSelectService = (serviceSlug: string) => {
+    if (serviceSlug !== selectedServiceSlug) {
+      setSelectedKeyAreas([]);
+    }
+
+    setSelectedServiceSlug(serviceSlug);
+
+    window.requestAnimationFrame(() => {
+      specialAreasRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
+
+  const toggleKeyArea = (item: string) => {
+    setSelectedKeyAreas((current) =>
+      current.includes(item)
+        ? current.filter((entry) => entry !== item)
+        : [...current, item],
+    );
+  };
 
   useLayoutEffect(() => {
     if (!sectionRef.current) {
@@ -136,7 +213,10 @@ export const QuoteDetails = () => {
         className="pt-14 lg:pt-24"
       >
         <Col xs={24} lg={16}>
-          <div className="mb-16 lg:mb-20">
+          <div
+            ref={personalDetailsRef}
+            className="mb-16 lg:mb-20 scroll-mt-24 lg:scroll-mt-32"
+          >
             <div className="flex items-center gap-4" data-quote-section-title data-quote-step>
               <div className="flex bg-primary rounded-md gap-4">
                 <p className="font-manrope font-extrabold px-4 py-3 text-white">
@@ -201,41 +281,103 @@ export const QuoteDetails = () => {
                 Service Selection
               </p>
             </div>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              <div className="w-full bg-grey-7 p-6 sm:p-8 rounded-md" data-quote-card>
-                <Image src={homeIcon} alt="" />
-                <div className="mt-6">
-                  <p className="text-primary font-manrope font-extrabold text-lg">
-                    Residential
-                  </p>
-                  <p className="mt-2 text-primary/70 font-manrope">
-                    Full estate cleaning and meticulous housekeeping.
-                  </p>
-                </div>
-              </div>
-              <div className="w-full bg-grey-7 p-6 sm:p-8 rounded-md" data-quote-card>
-                <Image src={companyIcon} alt="" />
-                <div className="mt-6">
-                  <p className="text-primary font-manrope font-extrabold text-lg">
-                    Commercial
-                  </p>
-                  <p className="mt-2 text-primary/70 font-manrope">
-                    Executive office spaces and high-end retail boutiques.
-                  </p>
-                </div>
-              </div>
-              <div className="w-full bg-grey-7 p-6 sm:p-8 rounded-md sm:col-span-2 xl:col-span-1" data-quote-card>
-                <Image src={starIcon} alt="" />
-                <div className="mt-6">
-                  <p className="text-primary font-manrope font-extrabold text-lg">
-                    Specialist
-                  </p>
-                  <p className="mt-2 text-primary/70 font-manrope">
-                    Antiques care, post-renovation, or event staging.
-                  </p>
-                </div>
-              </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+              {serviceProtocols.map((serviceProtocol) => {
+                const isActive = selectedServiceSlug === serviceProtocol.slug;
+
+                return (
+                  <button
+                    type="button"
+                    key={serviceProtocol.slug}
+                    data-quote-card
+                    aria-pressed={isActive}
+                    onClick={() => handleSelectService(serviceProtocol.slug)}
+                    className={`w-full rounded-md p-6 text-left transition sm:p-8 ${
+                      isActive
+                        ? "border-2 border-secondary bg-secondary/10 shadow-[0_16px_35px_rgba(8,10,88,0.08)]"
+                        : "bg-grey-7 opacity-70 grayscale-[0.35] hover:-translate-y-0.5 hover:opacity-100 hover:grayscale-0"
+                    }`}
+                  >
+                    <Image src={serviceProtocol.image} alt="" />
+                    <div className="mt-6">
+                      <p className="text-primary font-manrope font-extrabold text-lg">
+                        {serviceProtocol.serviceName}
+                      </p>
+                      <p className="mt-2 text-primary/70 font-manrope">
+                        {serviceProtocol.keyAreas[0]}
+                      </p>
+                    </div>
+                    {isActive ? (
+                      <p className="mt-5 text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
+                        Selected from services page
+                      </p>
+                    ) : null}
+                  </button>
+                );
+              })}
             </div>
+            {selectedService ? (
+              <div
+                ref={specialAreasRef}
+                className="mt-6 rounded-lg border border-secondary/15 bg-secondary/6 p-4 sm:p-5"
+              >
+                <p className="text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
+                  Protocol builder
+                </p>
+                <p className="mt-2 text-base font-manrope font-extrabold text-primary">
+                  {selectedService.serviceName}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-[var(--on-surface-variant)]">
+                  Pick any key area below to include it in the quote. Click again to remove it.
+                </p>
+                <div className="mt-4">
+                  <p className="text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
+                    Key areas
+                  </p>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                    {selectedService.keyAreas.map((item) => (
+                      <button
+                        type="button"
+                        key={item}
+                        aria-pressed={selectedKeyAreas.includes(item)}
+                        onClick={() => toggleKeyArea(item)}
+                        className={`rounded-full px-4 py-3 text-left text-xs font-manrope font-semibold transition sm:text-sm ${
+                          selectedKeyAreas.includes(item)
+                            ? "border border-secondary bg-secondary/12 text-primary shadow-[0_8px_18px_rgba(8,10,88,0.08)]"
+                            : "border border-[var(--line)] bg-white text-primary/60 hover:border-secondary/35 hover:bg-secondary/6 hover:text-primary"
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-5">
+                  <p className="text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
+                    Special focus
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {selectedService.specialFocus.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-secondary/15 bg-white px-3 py-2 text-xs font-manrope font-semibold text-primary"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-5 rounded-xl border border-white/70 bg-white/70 p-4">
+                  <p className="text-xs font-manrope font-extrabold uppercase tracking-[0.18em] text-secondary">
+                    Selected count
+                  </p>
+                  <p className="mt-2 text-sm font-manrope font-semibold text-primary">
+                    {selectedKeyAreas.length} key area
+                    {selectedKeyAreas.length === 1 ? "" : "s"} selected
+                  </p>
+                </div>
+              </div>
+            ) : null}
           </div>
           <div className="mb-16 lg:mb-20">
             <div className="flex items-center gap-4" data-quote-section-title data-quote-step>

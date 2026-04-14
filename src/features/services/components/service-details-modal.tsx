@@ -3,19 +3,15 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Button } from "@/common/components/button";
 import brushIcon from "@/assets/svgs/brush-icon.svg";
 import arrowRight from "@/assets/svgs/arrow-right.svg";
 import checkeredIcon from "@/assets/svgs/checkered.svg";
-
-export type ServiceDetails = {
-  serviceName: string;
-  keyAreas: readonly string[] | string[];
-  specialFocus: readonly string[] | string[];
-};
+import type { ServiceProtocol } from "../data/service-protocols";
 
 type ServiceDetailsModalProps = {
-  service: ServiceDetails | null;
+  service: ServiceProtocol | null;
   onClose: () => void;
 };
 
@@ -23,6 +19,7 @@ export function ServiceDetailsModal({
   onClose,
   service,
 }: ServiceDetailsModalProps) {
+  const router = useRouter();
   const [selectedKeyAreas, setSelectedKeyAreas] = useState<string[]>(
     service ? [...service.keyAreas] : [],
   );
@@ -54,6 +51,19 @@ export function ServiceDetailsModal({
         ? current.filter((entry) => entry !== item)
         : [...current, item],
     );
+  };
+
+  const handleBookThisProtocol = () => {
+    const params = new URLSearchParams();
+
+    params.set("service", service.slug);
+
+    if (selectedKeyAreas.length > 0) {
+      params.set("areas", selectedKeyAreas.join("|"));
+    }
+
+    router.push(`/get-a-quote?${params.toString()}`);
+    onClose();
   };
 
   if (!service || typeof document === "undefined") {
@@ -174,8 +184,10 @@ export function ServiceDetailsModal({
 
               <div className="mt-8">
                 <Button
+                  type="button"
                   className="w-full py-4 text-sm uppercase tracking-[0.18em] sm:py-5"
                   rightIcon={arrowRight}
+                  onClick={handleBookThisProtocol}
                 >
                   Book This Protocol
                 </Button>

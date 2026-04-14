@@ -4,95 +4,14 @@ import { useState } from "react";
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import { ServiceBanner } from "./components/service-banner";
 import { ServiceContainer } from "./components/service-container";
-import {
-  ServiceDetailsModal,
-  type ServiceDetails,
-} from "./components/service-details-modal";
-import bathroomImage from "@/assets/images/bathroom-3.jpg";
-import sittingRoomImage from "@/assets/images/sitting-room.jpg";
-import kitchenImage from "@/assets/images/kitchen.jpg";
-import bedroomImage from "@/assets/images/bedroom.jpg";
+import { ServiceDetailsModal } from "./components/service-details-modal";
+import { serviceProtocols } from "./data/service-protocols";
+import type { ServiceProtocol } from "./data/service-protocols";
 
-const services = [
-  {
-    image: bathroomImage,
-    keyAreas: [
-      "Toilet (seat, bowl, base, flush handle)",
-      "Sink & faucet",
-      "Shower area / bathtub",
-      "Tiles & grout",
-      "Mirrors & glass surfaces",
-      "Bathroom cabinets & shelves",
-      "Floor (sweeping & mopping)",
-      "Door handles & light switches",
-    ] as string[],
-    serviceName: "Bathroom Cleaning",
-    specialFocus: [
-      "Disinfection of high-touch areas",
-      "Mold & mildew removal",
-      "Drain cleaning",
-    ] as string[],
-  },
-  {
-    image: sittingRoomImage,
-    keyAreas: [
-      "Sofas & cushions (vacuuming/wiping)",
-      "Coffee tables & side tables",
-      "TV stand & electronics (dusting)",
-      "Shelves & decor items",
-      "Carpets & rugs",
-      "Curtains & blinds",
-      "Windows & window sills",
-      "Floor (sweeping, mopping, or vacuuming)",
-    ] as string[],
-    serviceName: "Sitting Room",
-    specialFocus: [
-      "Dust removal",
-      "Upholstery cleaning",
-      "Odor control",
-    ] as string[],
-  },
-  {
-    image: kitchenImage,
-    keyAreas: [
-      "Sink & tap",
-      "Countertops",
-      "Stove / cooktop",
-      "Oven & microwave (if included)",
-      "Cabinets (inside & outside)",
-      "Refrigerator (optional deep clean)",
-      "Dish rack & surfaces",
-      "Floor",
-    ] as string[],
-    serviceName: "Kitchen Cleaning",
-    specialFocus: [
-      "Grease removal",
-      "Food stain cleaning",
-      "Sanitization of food prep areas",
-    ] as string[],
-  },
-  {
-    image: bedroomImage,
-    keyAreas: [
-      "Bed & mattress (dusting/arranging)",
-      "Wardrobe & drawers (external/internal optional)",
-      "Bedside tables",
-      "Mirrors",
-      "Windows & curtains",
-      "Carpets or floors",
-      "Light switches & door handles",
-    ] as string[],
-    serviceName: "Bedroom Cleaning",
-    specialFocus: [
-      "Dusting & air freshness",
-      "Organization (optional add-on)",
-      "Linen changing",
-    ] as string[],
-  },
-];
+const services = serviceProtocols;
 
 export function ServicesPage() {
-  const [selectedService, setSelectedService] = useState<ServiceDetails | null>(
+  const [selectedService, setSelectedService] = useState<ServiceProtocol | null>(
     null,
   );
   const [searchQuery, setSearchQuery] = useState("");

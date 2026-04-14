@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { AppProviders } from "@/common/providers/app-providers";
 
 const manrope = Manrope({
   display: "swap",
@@ -35,7 +36,9 @@ export default function RootLayout({
       className={`${manrope.variable} ${interSemibold.variable} h-full antialiased`}
     >
       <body className="min-h-full">
-        <AntdRegistry>{children}</AntdRegistry>
+        <AntdRegistry>
+          <AppProviders>{children}</AppProviders>
+        </AntdRegistry>
       </body>
     </html>
   );
