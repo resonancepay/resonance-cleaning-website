@@ -327,7 +327,7 @@ export const QuoteDetails = () => {
                 <p className="mt-2 text-base font-manrope font-extrabold text-primary">
                   {selectedService.serviceName}
                 </p>
-                <p className="mt-3 text-sm leading-7 text-[var(--on-surface-variant)]">
+                <p className="mt-3 text-sm leading-7 text-on-surface-variant">
                   Pick any key area below to include it in the quote. Click again to remove it.
                 </p>
                 <div className="mt-4">
@@ -344,7 +344,7 @@ export const QuoteDetails = () => {
                         className={`rounded-full px-4 py-3 text-left text-xs font-manrope font-semibold transition sm:text-sm ${
                           selectedKeyAreas.includes(item)
                             ? "border border-secondary bg-secondary/12 text-primary shadow-[0_8px_18px_rgba(8,10,88,0.08)]"
-                            : "border border-[var(--line)] bg-white text-primary/60 hover:border-secondary/35 hover:bg-secondary/6 hover:text-primary"
+                            : "border border-(--line) bg-white text-primary/60 hover:border-secondary/35 hover:bg-secondary/6 hover:text-primary"
                         }`}
                       >
                         {item}

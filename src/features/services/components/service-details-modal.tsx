@@ -54,9 +54,15 @@ export function ServiceDetailsModal({
   };
 
   const handleBookThisProtocol = () => {
+    const activeService = service;
+
+    if (!activeService) {
+      return;
+    }
+
     const params = new URLSearchParams();
 
-    params.set("service", service.slug);
+    params.set("service", activeService.slug);
 
     if (selectedKeyAreas.length > 0) {
       params.set("areas", selectedKeyAreas.join("|"));
