@@ -29,21 +29,21 @@ export const VisionBanner = () => {
           <Col xs={24} lg={12} className="order-1 lg:order-2">
             <div className="flex  h-full flex-col justify-center">
               <h3 className="mb-8 font-manrope text-4xl font-extrabold text-primary">
-                THE VISION
+                OUR VISION
               </h3>
               <div>
                 <p className="font-manrope text-lg text-grey-4">
-                  The Polished Estate was born from a singular observation: the
-                  UK&apos;s most prestigious residences require more than a
-                  standard cleaning service. They require a bespoke concierge
-                  approach that treats every surface with archival care.
+                  Resonance Cleaning Services was born from a singular
+                  observation: the UK&apos;s finest homes and offices require
+                  more than a standard cleaning service. They require a
+                  meticulous, tailored approach — one that treats every
+                  surface with precision and every commercial center, office,
+                  and home with respect.
                 </p>
                 <p className="mt-4 font-manrope text-lg text-grey-4">
-                  Our vision is to elevate domestic service into a seamless,
-                  invisible art form. We believe that true luxury is found in
-                  the details—the perfectly aligned cushion, the streak-free
-                  crystal, and the peace of mind that comes from total
-                  professional reliability.
+                  Our vision is to elevate residential and commercial cleaning
+                  into a seamless, quietly excellent standard of care. We
+                  believe real cleaning is found in the details.
                 </p>
 
                 <div className="mt-8 pt-12 border-t border-primary/10">

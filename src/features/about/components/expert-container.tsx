@@ -17,7 +17,7 @@ export const ExperContainer = () => {
             </h1>
             <p className="mx-auto mt-4 w-full max-w-2xl text-center font-manrope text-base font-medium text-grey-4">
               Selected for their discretion, trained for precision, and
-              committed to the highest tier of service excellence.
+              committed to the highest tier of cleaning excellence.
             </p>
           </div>
           <div className="mt-12 w-full lg:mt-18">
@@ -31,7 +31,7 @@ export const ExperContainer = () => {
                   <p className="font-manrope text-grey-4 leading-6">
                     Every member of our staff undergoes rigorous background
                     checks and enhanced DBS certification to ensure absolute
-                    security for your home and family.
+                    security for your home, office, or commercial centre.
                   </p>
                 </div>
               </Col>

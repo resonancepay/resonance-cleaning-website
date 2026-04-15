@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/common/components/button";
+import { ButtonLink } from "@/common/components/button";
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import gsap from "gsap";
 import React, { useLayoutEffect, useRef } from "react";
@@ -111,34 +111,44 @@ export const AboutBanner = () => {
             <div data-about-copy className="mb-6 flex items-center gap-3">
               <span data-about-line className="h-px w-12 bg-accent-lime/80" />
               <p className="font-manrope text-[0.68rem] font-bold tracking-[0.34em] text-accent-lime">
-                EST. 2024
+                THE APPROACH
               </p>
             </div>
             <p
               data-hero-copy
               className="mt-6 mb-8 lg:text-7xl text-5xl font-manrope font-extrabold leading-14 lg:leading-20 text-surface-container-lowest"
             >
-              Our Heritage of{" "}
-              <span className="text-accent-lime">Excellence</span>
+              Resonance Cleaning{" "}
+              <span className="text-accent-lime">Services</span>
             </p>
-            <p
-              data-hero-copy
-              className="mb-8  sm:w-4/5  w-full text-lg font-inter font-semibold text-surface-container-lowest/80"
-            >
-              Redefining domestic management through the lens of high- end
-              hospitality. We don&apos;t just clean; we curate environments of
-              absolute tranquility.
-            </p>
+              <p
+                data-hero-copy
+                className="mb-8  sm:w-4/5  w-full text-lg font-inter font-semibold text-surface-container-lowest/80"
+              >
+                Resonance Cleaning Services was born from a singular observation:
+                the UK&apos;s finest homes and offices require more than a
+                standard cleaning. They require a meticulous, tailored
+                approach — one that treats every surface with precision and
+                every commercial center, office, and home with respect.
+              </p>
             <div
               data-hero-copy
               className="flex lg:flex-row flex-col items-start lg:items-center gap-4 w-full "
             >
-              <Button variant="white" className="py-4 lg:w-auto w-full">
-                THE VISION
-              </Button>
-              <Button variant="transparent" className="py-4 lg:w-auto w-full">
-                CONTACT US
-              </Button>
+              <ButtonLink
+                href="#standards"
+                variant="white"
+                className="py-4 lg:w-auto w-full"
+              >
+                OUR STANDARDS
+              </ButtonLink>
+              <ButtonLink
+                href="/get-a-quote"
+                variant="transparent"
+                className="py-4 lg:w-auto w-full"
+              >
+                GET A QUOTE
+              </ButtonLink>
             </div>
           </div>
 
@@ -202,7 +212,7 @@ export const AboutBanner = () => {
                               >
                                 <span className="h-1.5 w-1.5 rounded-full bg-accent-lime" />
                                 <p className="text-[0.88rem] font-semibold text-white/82">
-                                  Estate management
+                                  Office upkeep
                                 </p>
                               </div>
                               <div
@@ -211,7 +221,7 @@ export const AboutBanner = () => {
                               >
                                 <span className="h-1.5 w-1.5 rounded-full bg-accent-lime" />
                                 <p className="text-[0.88rem] font-semibold text-white/82">
-                                  Concierge scheduling
+                                  Service planning
                                 </p>
                               </div>
                             </div>
@@ -265,7 +275,7 @@ export const AboutBanner = () => {
                                 className="rounded-full border border-white/10 bg-white/5 px-3 py-2"
                               >
                                 <p className="text-[0.7rem] font-bold tracking-[0.16em] text-white/80">
-                                  5-STAR SERVICE
+                                  RESIDENTIAL CLEANING
                                 </p>
                               </div>
                               <div
@@ -273,7 +283,7 @@ export const AboutBanner = () => {
                                 className="rounded-full border border-white/10 bg-white/5 px-3 py-2"
                               >
                                 <p className="text-[0.7rem] font-bold tracking-[0.16em] text-white/80">
-                                  DBS-VETTED
+                                  COMMERCIAL CENTERS
                                 </p>
                               </div>
                               <div
@@ -281,7 +291,7 @@ export const AboutBanner = () => {
                                 className="rounded-full border border-white/10 bg-white/5 px-3 py-2"
                               >
                                 <p className="text-[0.7rem] font-bold tracking-[0.16em] text-white/80">
-                                  CONCIERGE LED
+                                  OFFICES
                                 </p>
                               </div>
                             </div>
@@ -297,8 +307,8 @@ export const AboutBanner = () => {
                         REFINED PROCESS
                       </p>
                       <p className="mt-2 font-manrope text-[1.35rem] font-semibold leading-tight text-white">
-                        Quiet execution, consistent standards, and a concierge
-                        approach to every visit.
+                        Quiet execution, consistent standards, and a tailored
+                        cleaning approach to every visit.
                       </p>
                     </div>
                     <div>
@@ -308,7 +318,7 @@ export const AboutBanner = () => {
                           className="rounded-full border border-white/10 bg-white/7 px-3.5 py-1.5"
                         >
                           <p className="text-[0.68rem] font-bold tracking-[0.16em] text-white/80">
-                            24/7 SUPPORT
+                            AFTER-HOURS
                           </p>
                         </div>
                         <div
@@ -329,7 +339,7 @@ export const AboutBanner = () => {
                             01
                           </p>
                           <p className="mt-1 text-[0.58rem] font-semibold tracking-[0.16em] text-white/55">
-                            CONSULT
+                            REVIEW
                           </p>
                         </div>
                         <div
@@ -351,7 +361,7 @@ export const AboutBanner = () => {
                             03
                           </p>
                           <p className="mt-1 text-[0.58rem] font-semibold tracking-[0.16em] text-white/55">
-                            EXECUTE
+                            CLEAN
                           </p>
                         </div>
                       </div>

@@ -71,8 +71,8 @@ export const ServiceBanner = () => {
               <p data-service-heading className="text-on-surface">
                 Our Bespoke
               </p>
-              <p data-service-heading className="text-secondary ">
-                Cleaning Protocols
+              <p data-service-heading className="text-secondary">
+                Cleaning Services
               </p>
             </div>
             <div className="flex w-full items-center justify-start lg:w-1/2 lg:justify-end">
@@ -80,8 +80,9 @@ export const ServiceBanner = () => {
                 data-service-copy
                 className="w-full max-w-none font-manrope text-base leading-8 text-on-surface/70 lg:w-1/2 lg:text-lg"
               >
-                Meticulously designed maintenance protocols tailored for the
-                most discerning residential environments, room by room.
+                Room-by-room cleaning protocols for private homes, commercial
+                spaces, and offices, delivered with discretion, precision, and
+                a flawless finish.
               </p>
             </div>
           </div>

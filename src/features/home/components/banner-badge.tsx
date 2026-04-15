@@ -7,7 +7,7 @@ export const BannerBadge = () => {
     <div className="bg-foreground px-4 py-2 rounded-full flex gap-2">
       <Image src={starIcon} alt="star icon" />
       <p className="text-accent-lime text-xs font-manrope font-bold">
-        The Digital Concierge
+        The Resonance Standard
       </p>
     </div>
   );

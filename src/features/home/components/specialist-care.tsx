@@ -5,10 +5,10 @@ import specialistIcon from "@/assets/svgs/specialist-care.svg";
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import Image from "next/image";
 import { Col, Row } from "antd";
-import specialistImage from "@/assets/svgs/specialist-big-image.svg";
 import quoteIcon from "@/assets/svgs/quote-icon.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import cleanroom from "@/assets/images/clean room.jpg"
 
 export const SpecialistCare = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -82,12 +82,13 @@ export const SpecialistCare = () => {
                 data-specialist-copy
                 className="text-black text-sm lg:text-base mt-4 mb-8"
               >
-                Deep restoration services for marble, antique woods, and
-                high-performance glass facades using surgical precision.
+                Deep cleaning for marble, antique woods, and high-performance
+                glass — using meticulous, non-abrasive techniques that respect
+                and reveal the original beauty of each surface.
               </p>
               <div data-specialist-copy>
                 <Image
-                  src={specialistImage}
+                  src={cleanroom}
                   alt=""
                   className="w-full rounded-lg"
                 />
@@ -107,10 +108,10 @@ export const SpecialistCare = () => {
                   <Image src={quoteIcon} alt="" />
                 </span>
                 <p className="font-manrope font-bold text-base lg:text-xl">
-                  &apos;&apos;The Polished Estate has completely transformed our
-                  London townhouse management. Their team operates like a
-                  high-end concierge service—invisible yet
-                  impactful.&apos;&apos;
+                  &apos;&apos;Resonance Cleaning Services has completely
+                  transformed our London townhouse. Their team operates with
+                  precision, discretion, and a standard of care that is always
+                  exceptional.&apos;&apos;
                 </p>
                 <div className="flex items-center gap-4 mt-6">
                   <div className="w-12 h-12 rounded-full aspect-square bg-grey"></div>
@@ -119,7 +120,7 @@ export const SpecialistCare = () => {
                       JAMES HARRINGTON
                     </p>
                     <div className="mt-1">
-                      <p className="text-xs">Private Estate Owner, Kesington</p>
+                      <p className="text-xs">Private Estate Owner, Kensington</p>
                     </div>
                   </div>
                 </div>

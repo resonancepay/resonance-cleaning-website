@@ -63,7 +63,7 @@ export const AboutSubFooter = () => {
             </h2>
             <p className="mt-6 max-w-[34rem] font-manrope text-base leading-8 text-white/72 sm:text-lg">
               Allow us to introduce our standards to your home. Book a
-              consultation for a bespoke management plan.
+              consultation for a bespoke cleaning plan.
             </p>
           </div>
 

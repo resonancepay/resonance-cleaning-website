@@ -10,10 +10,27 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSearchParams } from "next/navigation";
+import { useSubmitQuoteMutation } from "../hooks/quote.hooks";
 import {
   findServiceProtocolBySlug,
   serviceProtocols,
 } from "@/features/services/data/service-protocols";
+import type { QuoteSubmissionPayload } from "../types/quote.types";
+
+type QuoteFormValues = Pick<
+  QuoteSubmissionPayload,
+  "fullname" | "email" | "phone" | "postcode" | "frequency" | "start_date" | "requirements"
+>;
+
+const initialQuoteFormValues: QuoteFormValues = {
+  fullname: "",
+  email: "",
+  phone: "",
+  postcode: "",
+  frequency: "",
+  start_date: "",
+  requirements: "",
+};
 
 export const QuoteDetails = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -45,6 +62,18 @@ export const QuoteDetails = () => {
   const [selectedKeyAreas, setSelectedKeyAreas] = useState<string[]>(
     initialSelectedKeyAreas,
   );
+  const [formValues, setFormValues] = useState<QuoteFormValues>(
+    initialQuoteFormValues,
+  );
+  const today = useMemo(() => {
+    const currentDate = new Date();
+    const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
+
+    return new Date(currentDate.getTime() - timezoneOffset)
+      .toISOString()
+      .split("T")[0];
+  }, []);
+  const submitQuoteMutation = useSubmitQuoteMutation();
   const selectedService = useMemo(
     () =>
       serviceProtocols.find((service) => service.slug === selectedServiceSlug) ??
@@ -91,6 +120,30 @@ export const QuoteDetails = () => {
         ? current.filter((entry) => entry !== item)
         : [...current, item],
     );
+  };
+
+  const handleFieldChange = (
+    field: keyof QuoteFormValues,
+    value: string,
+  ) => {
+    setFormValues((current) => ({
+      ...current,
+      [field]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    if (!selectedService) {
+      return;
+    }
+    console.log("Got right here")
+
+    submitQuoteMutation.mutate({
+      ...formValues,
+      service: selectedService.serviceName,
+      key_areas: selectedKeyAreas,
+      special_focus: selectedService.specialFocus,
+    });
   };
 
   useLayoutEffect(() => {
@@ -234,6 +287,10 @@ export const QuoteDetails = () => {
                     Full Name
                   </label>
                   <input
+                    value={formValues.fullname}
+                    onChange={(event) =>
+                      handleFieldChange("fullname", event.target.value)
+                    }
                     className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
                     placeholder="e.g. Alexander Hamilton"
                   />
@@ -243,6 +300,10 @@ export const QuoteDetails = () => {
                     Email Address
                   </label>
                   <input
+                    value={formValues.email}
+                    onChange={(event) =>
+                      handleFieldChange("email", event.target.value)
+                    }
                     className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
                     placeholder="alex@gmail.com"
                   />
@@ -254,6 +315,10 @@ export const QuoteDetails = () => {
                     Contact Number
                   </label>
                   <input
+                    value={formValues.phone}
+                    onChange={(event) =>
+                      handleFieldChange("phone", event.target.value)
+                    }
                     className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
                     placeholder="+44 20 7123 4567"
                   />
@@ -263,6 +328,10 @@ export const QuoteDetails = () => {
                     Postcode / Area
                   </label>
                   <input
+                    value={formValues.postcode}
+                    onChange={(event) =>
+                      handleFieldChange("postcode", event.target.value)
+                    }
                     className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
                     placeholder="SW1A 1AA"
                   />
@@ -344,7 +413,7 @@ export const QuoteDetails = () => {
                         className={`rounded-full px-4 py-3 text-left text-xs font-manrope font-semibold transition sm:text-sm ${
                           selectedKeyAreas.includes(item)
                             ? "border border-secondary bg-secondary/12 text-primary shadow-[0_8px_18px_rgba(8,10,88,0.08)]"
-                            : "border border-(--line) bg-white text-primary/60 hover:border-secondary/35 hover:bg-secondary/6 hover:text-primary"
+                            : "border border-[var(--line)] bg-white text-primary/60 hover:border-secondary/35 hover:bg-secondary/6 hover:text-primary"
                         }`}
                       >
                         {item}
@@ -397,6 +466,10 @@ export const QuoteDetails = () => {
                     Service Frequency
                   </label>
                   <input
+                    value={formValues.frequency}
+                    onChange={(event) =>
+                      handleFieldChange("frequency", event.target.value)
+                    }
                     className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
                     placeholder="e.g. Alexander Hamilton"
                   />
@@ -406,8 +479,13 @@ export const QuoteDetails = () => {
                     Preferred Start Date
                   </label>
                   <input
-                    className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
-                    placeholder="alex@gmail.com"
+                    type="date"
+                    min={today}
+                    value={formValues.start_date}
+                    onChange={(event) =>
+                      handleFieldChange("start_date", event.target.value)
+                    }
+                    className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 text-primary [color-scheme:light]"
                   />
                 </div>
               </div>
@@ -418,6 +496,10 @@ export const QuoteDetails = () => {
                   </label>
                   <textarea
                     rows={5}
+                    value={formValues.requirements}
+                    onChange={(event) =>
+                      handleFieldChange("requirements", event.target.value)
+                    }
                     className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
                     placeholder="Please detail any specific needs, high-value items requiring care, or entry instructions..."
                   />
@@ -429,8 +511,10 @@ export const QuoteDetails = () => {
                 variant="lime"
                 className="w-full py-4 sm:w-auto"
                 data-submit-button
+                disabled={submitQuoteMutation.isPending}
+                onClick={handleSubmit}
               >
-                SUBMIT INQUIRY
+                {submitQuoteMutation.isPending ? "SUBMITTING..." : "SUBMIT INQUIRY"}
               </Button>
             </div>
             <div>
@@ -438,6 +522,11 @@ export const QuoteDetails = () => {
                 By submitting, you agree to our concierge contacting you via
                 phone or email within 4 business hours.
               </p>
+              {submitQuoteMutation.isError ? (
+                <p className="mt-4 text-sm font-manrope font-semibold text-red-600">
+                  We could not submit your quote right now. Please try again.
+                </p>
+              ) : null}
             </div>
           </div>
         </Col>

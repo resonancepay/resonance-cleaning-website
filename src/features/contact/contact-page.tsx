@@ -3,13 +3,36 @@
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import { Button } from "@/common/components/button";
 import { Col, Row } from "antd";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSubmitContactInquiryMutation } from "./hooks/contact.hooks";
+import type { ContactInquiryPayload } from "./types/contact.types";
+
+type ContactFormValues = Pick<
+  ContactInquiryPayload,
+  | "fullName"
+  | "postcode"
+  | "emailAddress"
+  | "preferredService"
+  | "specificRequirements"
+>;
+
+const initialContactFormValues: ContactFormValues = {
+  fullName: "",
+  postcode: "",
+  emailAddress: "",
+  preferredService: "Signature Estate Cleaning",
+  specificRequirements: "",
+};
 
 export function ContactPage() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
+  const [formValues, setFormValues] = useState<ContactFormValues>(
+    initialContactFormValues,
+  );
+  const submitInquiryMutation = useSubmitContactInquiryMutation();
 
   useLayoutEffect(() => {
     if (!sectionRef.current) {
@@ -112,6 +135,20 @@ export function ContactPage() {
       ctx.revert();
     };
   }, []);
+
+  const handleFieldChange = (
+    field: keyof ContactFormValues,
+    value: string,
+  ) => {
+    setFormValues((current) => ({
+      ...current,
+      [field]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    submitInquiryMutation.mutate(formValues);
+  };
 
   useLayoutEffect(() => {
     if (!detailsRef.current) {
@@ -393,6 +430,10 @@ export function ContactPage() {
                           Full Name
                         </label>
                         <input
+                          value={formValues.fullName}
+                          onChange={(event) =>
+                            handleFieldChange("fullName", event.target.value)
+                          }
                           className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
                           placeholder="e.g. Alexander Hamilton"
                         />
@@ -402,6 +443,10 @@ export function ContactPage() {
                           Postcode
                         </label>
                         <input
+                          value={formValues.postcode}
+                          onChange={(event) =>
+                            handleFieldChange("postcode", event.target.value)
+                          }
                           className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
                           placeholder="e.g. W1J 6ED"
                         />
@@ -414,6 +459,10 @@ export function ContactPage() {
                           Email Address
                         </label>
                         <input
+                          value={formValues.emailAddress}
+                          onChange={(event) =>
+                            handleFieldChange("emailAddress", event.target.value)
+                          }
                           className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
                           placeholder="name@domain.com"
                         />
@@ -423,7 +472,16 @@ export function ContactPage() {
                           Preferred Service
                         </label>
                         <div className="relative mt-2">
-                          <select className="bg-[#F4F5F7] w-full appearance-none text-sm font-manrope py-3.5 px-4 pr-12 text-[var(--primary)] sm:text-base">
+                          <select
+                            value={formValues.preferredService}
+                            onChange={(event) =>
+                              handleFieldChange(
+                                "preferredService",
+                                event.target.value,
+                              )
+                            }
+                            className="bg-[#F4F5F7] w-full appearance-none text-sm font-manrope py-3.5 px-4 pr-12 text-[var(--primary)] sm:text-base"
+                          >
                             <option>Signature Estate Cleaning</option>
                             <option>Deep Cleaning</option>
                             <option>Move-In / Move-Out</option>
@@ -443,6 +501,13 @@ export function ContactPage() {
                         </label>
                         <textarea
                           rows={5}
+                          value={formValues.specificRequirements}
+                          onChange={(event) =>
+                            handleFieldChange(
+                              "specificRequirements",
+                              event.target.value,
+                            )
+                          }
                           className="bg-[#F4F5F7] w-full mt-2 text-sm font-manrope py-3.5 px-4 placeholder:text-grey-6 placeholder:font-manrope sm:text-base"
                           placeholder="How may we assist you today?"
                         />
@@ -451,13 +516,24 @@ export function ContactPage() {
 
                     <div className="mt-8 sm:mt-10">
                       <Button
+                        type="button"
                         variant="lime"
                         className="w-full py-4 sm:w-auto sm:min-w-56"
                         data-submit-button
+                        disabled={submitInquiryMutation.isPending}
+                        onClick={handleSubmit}
                       >
-                        SUBMIT INQUIRY
+                        {submitInquiryMutation.isPending
+                          ? "SUBMITTING..."
+                          : "SUBMIT INQUIRY"}
                       </Button>
                     </div>
+                    {submitInquiryMutation.isError ? (
+                      <p className="mt-4 text-sm font-manrope font-semibold text-red-600">
+                        We could not send your inquiry right now. Please try
+                        again.
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </Col>

@@ -9,8 +9,9 @@ import houseIcon from "@/assets/svgs/house-icon.svg";
 import checkIcon from "@/assets/svgs/check-icon.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/common/components/button";
+import { ButtonLink } from "@/common/components/button";
 import arrowRightLong from "@/assets/svgs/arrow-right.svg";
+import Link from "next/link";
 
 export const ServicePillarSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -92,14 +93,14 @@ export const ServicePillarSection = () => {
             Our Service Pillars
           </h1>
           <div className="flex lg:flex-row flex-col items-center justify-between">
-            <p
-              data-pillar-header
-              className="lg:w-1/2 w-full text-base text-grey-2"
-            >
-              We provide a spectrum of elite management solutions designed to
-              maintain the architectural integrity and aesthetic purity of your
-              most valued assets.
-            </p>
+              <p
+                data-pillar-header
+                className="lg:w-1/2 w-full text-base text-grey-2"
+              >
+                We deliver a complete range of premium cleaning services
+                designed to preserve the beauty, hygiene, and longevity of
+                your home&apos;s finest surfaces and fabrics.
+              </p>
             <p
               data-pillar-header
               className="text-sm font-manrope w-full lg:w-auto text-right mt-6 lg:mt-0 font-bold text-on-surface tracking-widest"
@@ -116,25 +117,31 @@ export const ServicePillarSection = () => {
               className="domestic-cleaning-bg flex lg:h-125 h-75 flex-col items-start justify-end rounded-xl p-5 lg:p-10 mb-10  lg:mb-0"
             >
               <p className="font-manrope text-2xl lg:text-4xl text-white font-bold">
-                Domestic Estates
+                Private Homes
               </p>
               <p className="my-6 w-full lg:w-1/2 text-surface-container-low text-sm lg:text-base font-inter">
-                Personalized residential upkeep focused on delicate surfaces,
-                fine art preservation, and routine hospitality- grade cleaning.
+                Meticulous cleaning tailored to delicate surfaces, fine
+                furnishings, and the daily rhythms of your home, commercial
+                centers and offices — finished to an immaculate standard,
+                every time.
               </p>
-              <button className="hidden lg:flex items-center gap-2">
+              <Link
+                href="/services"
+                className="hidden lg:flex items-center gap-2"
+              >
                 <p className="text-accent-lime font-inter font-semibold text-base">
                   Explore Bespoke Plans
                 </p>
                 <Image src={arrowRight} alt="" />
-              </button>
-              <Button
+              </Link>
+              <ButtonLink
+                href="/services"
                 rightIcon={arrowRightLong}
                 variant="lime"
                 className="w-full lg:hidden flex"
               >
                 EXPLORE BESPOKE PLANS
-              </Button>
+              </ButtonLink>
             </div>
           </Col>
           <Col xs={24} lg={8}>
@@ -144,12 +151,14 @@ export const ServicePillarSection = () => {
             >
               <Image src={houseIcon} alt="" />
               <h3 className="mt-8 font-manrope text-2xl lg:text-4xl font-bold text-white">
-                Commercial Luxury
+                Executive & Corporate Interiors
               </h3>
               <div className="flex flex-1 flex-col justify-between">
                 <p className="text-surface-container-low text-base lg:text-base mt-4 w-full lg:w-4/5">
-                  Elevating corporate environments to reflect brand prestige,
-                  from executive boardrooms to boutique lobbies.
+                  Immaculate cleaning for executive boardrooms, boutique
+                  lobbies, and high-end corporate environments — upholding
+                  your brand&apos;s standard of excellence, quietly and
+                  consistently.
                 </p>
                 <div
                   data-commercial-list
@@ -158,19 +167,20 @@ export const ServicePillarSection = () => {
                   <div data-commercial-item className="flex items-center gap-3">
                     <Image src={checkIcon} alt="" />
                     <p className="text-surface-container-lowest text-xs lg:text-sm">
-                      After-hours Discretion
+                      Evenings &amp; Weekends
                     </p>
                   </div>
                   <div data-commercial-item className="flex items-center gap-3">
                     <Image src={checkIcon} alt="" />
                     <p className="text-surface-container-lowest text-xs lg:text-sm">
-                      After-hours Discretion
+                      Available evenings and weekends — zero disruption to your
+                      business day.
                     </p>
                   </div>
                   <div data-commercial-item className="flex items-center gap-3">
                     <Image src={checkIcon} alt="" />
                     <p className="text-surface-container-lowest text-xs lg:text-sm">
-                      After-hours Discretion
+                      Zero-Disruption Scheduling
                     </p>
                   </div>
                 </div>
