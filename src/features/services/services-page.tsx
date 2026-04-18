@@ -55,7 +55,7 @@ export function ServicesPage() {
                   Search Services
                 </p>
                 <p className="mt-2 text-sm font-manrope text-on-surface/68">
-                  Search by service name, key focus area, or special focus.
+                  Search by service name, room type, or specialist focus.
                 </p>
               </div>
               <p className="text-sm font-manrope font-bold text-primary/60">
@@ -86,7 +86,7 @@ export function ServicesPage() {
                 type="search"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Search bathroom, grease removal, mirrors, upholstery..."
+                placeholder="Search bathroom, kitchen, office, or room-specific care..."
                 className="w-full bg-transparent font-manrope text-sm text-primary outline-none placeholder:text-primary/35"
               />
             </label>
@@ -114,8 +114,8 @@ export function ServicesPage() {
                 No Matching Service
               </p>
               <p className="mt-3 font-manrope text-base text-on-surface/68">
-                No service matches &quot;{searchQuery}&quot;. Try a service
-                name, a sub-service, or a focus area.
+                No service matches &quot;{searchQuery}&quot;. Try a room type,
+                service name, or specialist focus area.
               </p>
             </div>
           </GeneralWrapper>

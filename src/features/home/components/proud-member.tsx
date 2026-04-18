@@ -77,8 +77,9 @@ export const ProudMember = () => {
           </div>
           <div data-proud-copy className="lg:w-[40%] w-full">
             <p className="text-center text-white/80">
-              The Polished Estate is a specialist division of the Resonance
-              Business Group, committed to excellence across luxury sectors.
+              Resonance Cleaning Services is a specialist division of the
+              Resonance Business Group, committed to excellence across luxury
+              sectors.
             </p>
           </div>
         </div>

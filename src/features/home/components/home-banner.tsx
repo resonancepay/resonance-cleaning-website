@@ -2,7 +2,7 @@
 
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import { BannerBadge } from "./banner-badge";
-import { Button } from "@/common/components/button";
+import { ButtonLink } from "@/common/components/button";
 import arrowRight from "@/assets/svgs/arrow-right.svg";
 import trustIcon from "@/assets/svgs/trust-icon.svg";
 import Image from "next/image";
@@ -82,31 +82,36 @@ export const HomeBanner = () => {
             data-hero-copy
             className="mt-6 mb-8 lg:text-7xl text-5xl font-manrope font-extrabold leading-14 lg:leading-20 text-surface-container-lowest"
           >
-            Bespoke <span className="text-accent-lime">Excellence</span> for the
-            Modern Estate.
+            Bespoke <span className="text-accent-lime">Clean</span> for the
+            Discerning Home
           </p>
           <p
             data-hero-copy
             className="mb-8  sm:w-4/5  w-full text-lg font-inter font-semibold text-surface-container-lowest/80"
           >
-            Redefining the standards of luxury maintenance across the United
-            Kingdom. Impeccable, quiet, and authoritative service tailored to
-            your lifestyle.
+            We deliver a complete range of premium cleaning services designed
+            to preserve the beauty, hygiene, and longevity of your home&apos;s
+            finest surfaces and fabrics.
           </p>
           <div
             data-hero-copy
             className="flex lg:flex-row flex-col items-start lg:items-center gap-4 w-full "
           >
-            <Button
+            <ButtonLink
+              href="/services"
               rightIcon={arrowRight}
               variant="lime"
               className="py-4 lg:w-auto w-full"
             >
               Discover our services
-            </Button>
-            <Button variant="glass" className="py-4 lg:w-auto w-full">
+            </ButtonLink>
+            <ButtonLink
+              href="/contact"
+              variant="glass"
+              className="py-4 lg:w-auto w-full"
+            >
               Request a Private Viewing
-            </Button>
+            </ButtonLink>
           </div>
         </div>
       </GeneralWrapper>

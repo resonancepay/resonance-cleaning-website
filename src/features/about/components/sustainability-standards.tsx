@@ -17,7 +17,7 @@ const standards = [
     icon: shieldPlain,
     title: "Ethical Chemistry",
     description:
-      "We use biodegradable, non-toxic agents that are kind to the environment while remaining highly effective on every surface.",
+      "We use biodegradable, non-toxic agents that protect delicate surfaces while remaining highly effective on every clean.",
   },
   {
     icon: shieldGrey,
@@ -27,9 +27,9 @@ const standards = [
   },
   {
     icon: shieldVariant,
-    title: "The Estate Log",
+    title: "The Service Log",
     description:
-      "Clients receive detailed maintenance logs that record what was cared for and how the property was maintained over time.",
+      "Clients receive detailed service logs that record what was cleaned and how the property was maintained over time.",
   },
 ];
 
@@ -90,7 +90,7 @@ export const SustainabilityStandards = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-10 lg:py-16">
+    <section ref={sectionRef} id="standards" className="py-10 lg:py-16 scroll-mt-24 lg:scroll-mt-32">
       <GeneralWrapper>
         <div className="rounded-[1.75rem] border border-primary/8 bg-white shadow-[0_22px_70px_rgba(8,10,88,0.08)] overflow-hidden">
           <Row gutter={0} className="min-h-[42rem]">

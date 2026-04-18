@@ -25,8 +25,8 @@ export function Footer() {
               </h1>
             </div>
             <p className="font-manrope text-xs w-full lg:w-4/5">
-              Setting the global benchmark for elite environmental maintenance
-              and hospitality-driven care.
+              Setting the benchmark for premium residential and commercial
+              cleaning with quiet, meticulous care.
             </p>
           </Col>
           <Col lg={18} xs={24}>
@@ -36,17 +36,17 @@ export function Footer() {
                   COMPANY
                 </p>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Link href={"/"}>
+                  <Link href={"/about"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       ABOUT US
                     </p>
                   </Link>
-                  <Link href={"/"}>
+                  <Link href={"/careers"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       CAREERS
                     </p>
                   </Link>
-                  <Link href={"/"}>
+                  <Link href={"/press-kit"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       PRESS KIT
                     </p>
@@ -58,17 +58,17 @@ export function Footer() {
                   SERVICES
                 </p>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Link href={"/"}>
+                  <Link href={"/services"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       HOME CLEANING
                     </p>
                   </Link>
-                  <Link href={"/"}>
+                  <Link href={"/services"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       COMMERCIAL
                     </p>
                   </Link>
-                  <Link href={"/"}>
+                  <Link href={"/services"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       ARTISANAL CARE
                     </p>
@@ -80,17 +80,17 @@ export function Footer() {
                   LEGAL
                 </p>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Link href={"/"}>
+                  <Link href={"/privacy-policy"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       PRIVACY POLICY
                     </p>
                   </Link>
-                  <Link href={"/"}>
+                  <Link href={"/terms-of-service"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       TERMS OF SERVICE
                     </p>
                   </Link>
-                  <Link href={"/"}>
+                  <Link href={"/sitemap"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       SITEMAP
                     </p>
@@ -104,7 +104,7 @@ export function Footer() {
       <div className="mt-20 py-8 border border-black/10">
         <GeneralWrapper>
           <p className="font-manrope text-xs font-bold text-primary/30">
-            © 2026 The Polished Estate. All rights reserved.
+            © 2026 Resonance Cleaning Services. All rights reserved.
           </p>
         </GeneralWrapper>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/common/components/button";
+import { ButtonLink } from "@/common/components/button";
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
 import { Col, Row } from "antd";
 import React, { useLayoutEffect, useRef } from "react";
@@ -75,20 +75,30 @@ export const NetStandard = () => {
               Ready for a New Standard?
             </p>
             <p data-net-copy className="text-center text-white/80 mt-8 text-xl">
-              Your estate deserves a level of care that matches its prestige.
-              Connect with our advisors to curate your custom management plan.
+              Your home deserves a level of care that matches its prestige.
+              Connect with our advisors to curate your custom cleaning plan.
             </p>
             <div
               data-net-actions
               className="mt-8 flex lg:flex-row flex-col items-center justify-center gap-4"
             >
               <div data-net-cta data-net-lime className="w-full lg:w-auto">
-                <Button className="py-4 w-full lg:w-auto " variant="lime">
+                <ButtonLink
+                  href="/get-a-quote"
+                  className="py-4 w-full lg:w-auto "
+                  variant="lime"
+                >
                   Start Your Inquiry
-                </Button>
+                </ButtonLink>
               </div>
               <div data-net-cta className="w-full lg:w-auto">
-                <Button className="w-full lg:w-auto" variant="glass">Download Brochure</Button>
+                <ButtonLink
+                  href="/about"
+                  className="w-full lg:w-auto"
+                  variant="glass"
+                >
+                  Download Brochure
+                </ButtonLink>
               </div>
             </div>
           </Col>
