@@ -29,7 +29,7 @@ export const serviceProtocols: ServiceProtocol[] = [
     serviceName: "Bathroom Cleaning",
     specialFocus: [
       "Disinfection of high-touch areas",
-      "Mold & mildew removal",
+      "Mould & mildew removal",
       "Drain cleaning",
     ],
   },

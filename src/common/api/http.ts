@@ -26,7 +26,6 @@ const getAccessToken = () => {
 export const apiClient = axios.create({
   baseURL,
   timeout: 30000,
-  withCredentials: true,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
