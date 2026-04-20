@@ -1,23 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { AppProviders } from "@/common/providers/app-providers";
-
-const manrope = Manrope({
-  display: "swap",
-  fallback: ["system-ui", "Arial", "sans-serif"],
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
-
-const interSemibold = Inter({
-  display: "swap",
-  fallback: ["system-ui", "Arial", "sans-serif"],
-  subsets: ["latin"],
-  variable: "--font-inter-semibold",
-  weight: "600",
-});
 
 export const metadata: Metadata = {
   title: "Resonance Cleaning",
@@ -31,10 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${manrope.variable} ${interSemibold.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full">
         <AntdRegistry>
           <AppProviders>{children}</AppProviders>

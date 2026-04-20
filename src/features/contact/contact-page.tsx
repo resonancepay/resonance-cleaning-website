@@ -341,11 +341,7 @@ export function ContactPage() {
                             London HQ
                           </p>
                           <p className="mt-2 text-sm leading-7 text-[var(--primary)] sm:text-base sm:leading-8">
-                            Berkeley Square House
-                            <br />
-                            Mayfair, London
-                            <br />
-                            W1J 6ED
+                            50 Kaimhill Circle
                           </p>
                         </div>
                       </div>
@@ -359,9 +355,11 @@ export function ContactPage() {
                             Direct Line
                           </p>
                           <p className="mt-2 text-sm leading-7 text-[var(--primary)] sm:text-base sm:leading-8">
-                            +44 (0) 20 7946 0123
+                            +447831176317
                             <br />
-                            concierge@polishedestate.com
+                            +447584054566
+                            <br />
+                            Talk2us@resonancebusinessgroup.org
                           </p>
                         </div>
                       </div>
