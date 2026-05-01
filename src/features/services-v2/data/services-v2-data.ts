@@ -30,6 +30,8 @@ import svcRugShampooing from "@/assets/images/svc-rug-shampooing.jpg";
 import svcStainRemoval from "@/assets/images/svc-stain-removal.jpg";
 import svcShortLet from "@/assets/images/svc-short-let.jpg";
 import svcPostConstruction from "@/assets/images/svc-post-construction.jpg";
+import svcGraffitiCleaning from "@/assets/images/svc-graffiti-cleaning.jpg";
+import svcBiohazardCleaning from "@/assets/images/svc-biohazard-cleaning.jpg";
 
 export type ServiceCategory = "domestic" | "commercial" | "special";
 
@@ -241,6 +243,18 @@ export const specialServices: SpecialService[] = [
     name: "Post-Construction Cleaning",
     tagline: "Dust, debris, and residue removal after building or renovation.",
     image: svcPostConstruction,
+  },
+  {
+    id: "graffiti-cleaning",
+    name: "Graffiti Cleaning",
+    tagline: "Complete removal of graffiti and paint from any surface.",
+    image: svcGraffitiCleaning,
+  },
+  {
+    id: "biohazard-cleaning",
+    name: "Biohazard Cleaning",
+    tagline: "Safe, professional decontamination and biohazard waste removal.",
+    image: svcBiohazardCleaning,
   },
 ];
 
