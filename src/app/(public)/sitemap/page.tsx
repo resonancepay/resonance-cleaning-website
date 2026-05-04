@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { GeneralWrapper } from "@/common/components/wrapper/general-wrapper";
+
+export const metadata: Metadata = {
+  title: "Sitemap",
+  description: "A full directory of pages on the Resonance Cleaning website.",
+  openGraph: {
+    title: "Sitemap — Resonance Cleaning",
+    description: "A full directory of pages on the Resonance Cleaning website.",
+    url: "https://www.resonancecleaningservices.org/sitemap",
+  },
+  twitter: {
+    title: "Sitemap — Resonance Cleaning",
+    description: "A full directory of pages on the Resonance Cleaning website.",
+  },
+  alternates: { canonical: "/sitemap" },
+};
 
 const sitemapLinks = [
   { href: "/", label: "Home" },

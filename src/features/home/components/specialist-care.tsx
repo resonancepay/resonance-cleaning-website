@@ -89,7 +89,7 @@ export const SpecialistCare = () => {
               <div data-specialist-copy>
                 <Image
                   src={cleanroom}
-                  alt=""
+                  alt="A professionally cleaned interior room showcasing Resonance Cleaning's specialist care service"
                   className="w-full rounded-lg"
                 />
               </div>

@@ -1,4 +1,23 @@
+import type { Metadata } from "next";
 import { StaticPage } from "@/features/static-page/static-page";
+
+export const metadata: Metadata = {
+  title: "Press Kit",
+  description:
+    "Media resources, brand assets, and press enquiry information for Resonance Cleaning.",
+  openGraph: {
+    title: "Press Kit — Resonance Cleaning",
+    description:
+      "Media resources, brand assets, and press enquiry information for Resonance Cleaning.",
+    url: "https://www.resonancecleaningservices.org/press-kit",
+  },
+  twitter: {
+    title: "Press Kit — Resonance Cleaning",
+    description:
+      "Media resources, brand assets, and press enquiry information for Resonance Cleaning.",
+  },
+  alternates: { canonical: "/press-kit" },
+};
 
 export default function PressKitPage() {
   return (
