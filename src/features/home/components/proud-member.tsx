@@ -71,7 +71,7 @@ export const ProudMember = () => {
           <div data-proud-logo className="bg-brand-muted my-6">
             <Image
               src={businesLogo}
-              alt=""
+              alt="Resonance Business Group logo"
               className="w-30 h-30 aspect-square"
             />
           </div>

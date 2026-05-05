@@ -367,7 +367,7 @@ export const QuoteDetails = () => {
                         : "bg-grey-7 opacity-70 grayscale-[0.35] hover:-translate-y-0.5 hover:opacity-100 hover:grayscale-0"
                     }`}
                   >
-                    <Image src={serviceProtocol.image} alt="" />
+                    <Image src={serviceProtocol.image} alt={serviceProtocol.serviceName} />
                     <div className="mt-6">
                       <p className="text-primary font-manrope font-extrabold text-lg">
                         {serviceProtocol.serviceName}
