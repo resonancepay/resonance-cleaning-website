@@ -65,13 +65,13 @@ export const QuoteDetails = () => {
   const [formValues, setFormValues] = useState<QuoteFormValues>(
     initialQuoteFormValues,
   );
-  const today = useMemo(() => {
+  const todayDateTime = useMemo(() => {
     const currentDate = new Date();
     const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
-
-    return new Date(currentDate.getTime() - timezoneOffset)
+    const local = new Date(currentDate.getTime() - timezoneOffset)
       .toISOString()
-      .split("T")[0];
+      .slice(0, 16);
+    return local;
   }, []);
   const submitQuoteMutation = useSubmitQuoteMutation();
   const selectedService = useMemo(
@@ -465,22 +465,28 @@ export const QuoteDetails = () => {
                   <label className="text-primary tracking-widest uppercase text-xs font-manrope font-extrabold">
                     Service Frequency
                   </label>
-                  <input
+                  <select
                     value={formValues.frequency}
                     onChange={(event) =>
                       handleFieldChange("frequency", event.target.value)
                     }
-                    className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 placeholder:text-grey-6 placeholder:font-manrope"
-                    placeholder="e.g. Alexander Hamilton"
-                  />
+                    className="bg-[#F4F5F7] w-full mt-2 text-base font-manrope py-4 px-4 text-primary appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Select frequency</option>
+                    <option value="One-off">One-off</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Fortnightly">Fortnightly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Quarterly">Quarterly</option>
+                  </select>
                 </div>
                 <div className="w-full" data-quote-field>
                   <label className="text-primary uppercase tracking-widest text-xs font-manrope font-extrabold">
-                    Preferred Start Date
+                    Preferred Start Date &amp; Time
                   </label>
                   <input
-                    type="date"
-                    min={today}
+                    type="datetime-local"
+                    min={todayDateTime}
                     value={formValues.start_date}
                     onChange={(event) =>
                       handleFieldChange("start_date", event.target.value)
@@ -605,6 +611,19 @@ export const QuoteDetails = () => {
                     </p>
                     <p className="text-primary/60 text-sm font-manrope mt-1">
                       Comprehensive liability for high-value items.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4" data-quote-facts>
+                  <div className="bg-accent-lime/20 flex items-center justify-center p-3 sm:p-4 rounded-md">
+                    <Image src={checkOutline} alt="" />
+                  </div>
+                  <div>
+                    <p className="uppercase font-manrope font-extrabold">
+                      Tech-Driven Site Assessment
+                    </p>
+                    <p className="text-primary/60 text-sm font-manrope mt-1">
+                      A fully technological assessment of the cleaning site before every visit.
                     </p>
                   </div>
                 </div>
