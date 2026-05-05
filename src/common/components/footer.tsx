@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import cleaningServicesLogo from "@/assets/images/Cleaning Services-1.png";
 
-
 export function Footer() {
   return (
     <footer className="lg:pt-20 bg-surface-container-low">
@@ -46,11 +45,6 @@ export function Footer() {
                       CAREERS
                     </p>
                   </Link>
-                  <Link href={"/press-kit"}>
-                    <p className="text-primary/60 font-manrope font-bold text-xs">
-                      PRESS KIT
-                    </p>
-                  </Link>
                 </div>
               </div>
               <div>
@@ -66,11 +60,6 @@ export function Footer() {
                   <Link href={"/services"}>
                     <p className="text-primary/60 font-manrope font-bold text-xs">
                       COMMERCIAL
-                    </p>
-                  </Link>
-                  <Link href={"/services"}>
-                    <p className="text-primary/60 font-manrope font-bold text-xs">
-                      ARTISANAL CARE
                     </p>
                   </Link>
                 </div>

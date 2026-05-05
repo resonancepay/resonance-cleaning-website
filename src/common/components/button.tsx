@@ -80,7 +80,7 @@ function getButtonClassName(variant: ButtonVariant) {
     case "white":
       return twMerge(
         baseClassName,
-        "min-h-10 rounded-[0.5rem] border border-white bg-white px-6 py-2.5 text-sm leading-5 !text-primary hover:translate-y-[-1px] hover:bg-white/95"
+        "min-h-10 rounded-[0.5rem] border border-white !bg-white px-6 py-2.5 text-sm leading-5 !text-primary hover:translate-y-[-1px] hover:!bg-white/95"
       );
     case "transparent":
       return twMerge(

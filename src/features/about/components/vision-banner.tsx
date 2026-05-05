@@ -13,8 +13,16 @@ export const VisionBanner = () => {
         <Row gutter={{ lg: 32 }} align="middle">
           <Col xs={24} lg={10} className="mb-10 lg:mb-0 order-2 lg:order-1">
             <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-[34rem]">
-                <Image src={visionIcon} alt="Elegantly cleaned interior space reflecting Resonance Cleaning's vision for precision and excellence" className="w-full" />
+              <div className="relative w-full max-w-[28rem]">
+                <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "3/4" }}>
+                  <Image
+                    src={visionIcon}
+                    alt="Elegantly cleaned grand interior reflecting Resonance Cleaning's vision for precision and excellence"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 28rem"
+                  />
+                </div>
                 <div className="absolute bottom-4 right-4 border-l-4 border-accent-lime bg-primary rounded-lg p-4 sm:p-6 lg:-bottom-6 lg:-right-12 lg:p-8">
                   <Image src={shieldPlain} alt="" />
                   <div className="mt-4">
