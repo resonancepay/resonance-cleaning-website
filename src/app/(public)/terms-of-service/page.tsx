@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaticPage } from "@/features/static-page/static-page";
+import { LegalPage } from "@/features/legal/legal-page";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -20,19 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function TermsOfServicePage() {
-  return (
-    <StaticPage
-      eyebrow="Legal"
-      title="Terms of Service"
-      description="This page is reserved for the terms that govern our services, bookings, and client expectations."
-      primaryCta={{
-        href: "/contact",
-        label: "Contact Us",
-      }}
-      secondaryCta={{
-        href: "/privacy-policy",
-        label: "Privacy Policy",
-      }}
-    />
-  );
+  return <LegalPage type="terms-of-service" />;
 }
