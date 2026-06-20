@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaticPage } from "@/features/static-page/static-page";
+import { LegalPage } from "@/features/legal/legal-page";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -19,19 +19,5 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
-  return (
-    <StaticPage
-      eyebrow="Legal"
-      title="Privacy Policy"
-      description="This is the place for our privacy practices, how we collect and use information, and the protections we apply to your data."
-      primaryCta={{
-        href: "/contact",
-        label: "Contact Us",
-      }}
-      secondaryCta={{
-        href: "/sitemap",
-        label: "View Sitemap",
-      }}
-    />
-  );
+  return <LegalPage type="privacy-policy" />;
 }
